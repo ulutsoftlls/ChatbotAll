@@ -520,13 +520,13 @@ def chatbot(request):
         time.sleep(1)
         response = 'hi'
         if my_setting_value == 'Mistral':
-            response = search_on_mistal(request.session['message'])
+            #response = search_on_mistal(request.session['message'])
             #response = 'Hi'
             current_time = datetime.now(pytz.timezone('Etc/GMT-6'))
             current_time = str(current_time)[:-13]
             #chat = Chat(user=request.user, message=request.session['message'], response=response)
             #chat.save()
-            return JsonResponse({'message': request.session['message'], 'response': response, 'model': 'Mistral', 'time': current_time})
+            return JsonResponse({'message': request.session['message'], 'response': 'response', 'model': 'Mistral', 'time': current_time})
         elif my_setting_value == 'Claudia':
             #com = search_from_claudia(request.POST['message'])
             current_time = datetime.now(pytz.timezone('Etc/GMT-6'))

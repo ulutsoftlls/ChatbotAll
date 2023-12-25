@@ -52,7 +52,7 @@ async def consume_streamer(stream):
             await asyncio.sleep(0.001)
 
 with torch.no_grad():
-    prompt = formatting_func("Салам кандайсың?")
+    prompt = formatting_func("Жашоонун маңызы кандай?")
     input_ids = tokenizer([prompt], return_tensors="pt").input_ids
     generate_args = {
         "max_new_tokens": 200,

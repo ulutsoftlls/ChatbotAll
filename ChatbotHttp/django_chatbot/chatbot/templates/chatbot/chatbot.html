@@ -213,9 +213,9 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
     var current_date = date.getFullYear()+"-"+(String(date.getMonth()+1).padStart(2,"0"))+"-"+ (String(date.getDate()).padStart(2, '0'));
 	var current_time = (String(date.getHours()).padStart(2, '0'))+":"+(String(date.getMinutes()).padStart(2, '0'))+":"+ (String(date.getSeconds()).padStart(2, '0'));
 	const date_time = current_date+" "+current_time;
-    {#let currentDay= String(date.getDate()).padStart(2, '0');#}
-    {#let currentMonth = String(date.getMonth()+1).padStart(2,"0");#}
-    {#let currentYear = date.getFullYear();#}
+    // let currentDay= String(date.getDate()).padStart(2, '0');
+    // let currentMonth = String(date.getMonth()+1).padStart(2,"0");
+    // let currentYear = date.getFullYear();
     //const currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
     messageItem.innerHTML = `
         <div class="message-text">
@@ -233,13 +233,13 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
         messageLoading.innerHTML = `<div class="spinner-block" id="loader">
       <div class="spinner spinner-1"></div>
     </div>`;
-{#        messageLoading.innerHTML = `<div class="spinner-tringle" id="loader">#}
-{#  <div class="blob top-tringle"></div>#}
-{#  <div class="blob bottom-tringle"></div>#}
-{#  <div class="blob left-tringle"></div>#}
-{##}
-{#  <div class="blob move-blob"></div>#}
-{#</div>`;#}
+//         messageLoading.innerHTML = `<div class="spinner-tringle" id="loader">#}
+// {#  <div class="blob top-tringle"></div>#}
+// {#  <div class="blob bottom-tringle"></div>#}
+// {#  <div class="blob left-tringle"></div>#}
+// {##}
+// {#  <div class="blob move-blob"></div>#}
+// {#</div>`;
 
         messagesList.appendChild(messageLoading);
 
@@ -248,6 +248,7 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
     const chatContainer = document.querySelector(".messages-list");
         chatContainer.scrollTop = chatContainer.scrollHeight;
     messageInput.value = '';
+
     fetch('/chatbot/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -262,6 +263,7 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
         const message = data.message;
         const model = data.model;
         const time = data.time;
+      
         if (model=='Claudia'){
                 //inputForm.disabled=true;
                 //submit.disabled=true;
@@ -323,24 +325,96 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
               }
                  } else {
               console.error('dont support websocket');
-                 };
+        };
 
         }
         else {//Mistral
-            const messageItem = document.createElement('li');
-            messageItem.classList.add('message', 'received');
-            messageItem.innerHTML = `
-        <div class="message-text">
-            <div class="message-sender">
-              <b>AI Mamtil ${time}</b>
-            </div>
-            <div class="message-content">
-                ${response}
-            </div>
-        </div>
-          `;
-            messagesList.appendChild(messageItem);
+          let receivedResponsesCount = 0;
+          const messageItem = document.createElement('li');
+                  messageItem.classList.add('message', 'received');
+                    i += 1
+                  messageItem.innerHTML = `
+                        <div class="message-text">
+                            <div class="message-sender">
+                              <b>AI Mamtil ${time}</b>
+                            </div>
+                            <div class="message-content" id="responseId${i}">
+                            </div>
+                        </div>
+                          `;
+                 messagesList.appendChild(messageItem);
+  let k = 0;
+  fetch(`http://127.0.0.1:8000/process_text/${message}`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    // Get a ReadableStream from the response body
+    const stream = response.body;
+
+    // Create a text decoder to convert the chunks to a string
+    const textDecoder = new TextDecoder();
+
+    // Read the stream as text
+    const reader = stream.getReader();
+    
+    function readChunk() {
+      return reader.read().then(({ value, done }) => {
+        if (done) {
+          console.log('Stream fully consumed');
+          return;
         }
+        const chunkText = textDecoder.decode(value);
+        
+                  //let div = document.getElementById('responseId');
+
+        let div = document.getElementById('responseId' + i);
+        if(k > 0)
+        {
+          div.innerHTML += chunkText
+          history += data
+          receivedResponsesCount++;
+
+                        // Perform the action when all responses are received
+          inputForm.disabled=false;
+          submit.disabled=false;
+          chatContainer.scrollTop = chatContainer.scrollHeight;
+        setTimeout(function() {
+        scrollButtonDown.style.display = 'none'; // Hide the button after a short delay
+    }, 100);
+
+        }
+        k++;
+        
+        // Handle the chunk of data (value) read from the stream
+        
+        console.log('Chunk of data:', chunkText);
+
+        // Continue reading the stream if necessary
+        return readChunk();
+      });
+    }
+
+    return readChunk();
+  })
+  .catch(error => console.error('Error fetching stream:', error));
+
+          
+            //const messageItem = document.createElement('li');
+        //     messageItem.classList.add('message', 'received');
+        //     messageItem.innerHTML = `
+        // <div class="message-text">
+        //     <div class="message-sender">
+        //       <b>AI Mamtil ${time}</b>
+        //     </div>
+        //     <div class="message-content">
+        //         ${response}
+        //     </div>
+        // </div>
+        //   `;
+        //     messagesList.appendChild(messageItem);
+        // }
         document.getElementById("loader").style.display = "none";
         const chatContainer = document.querySelector(".messages-list");
         chatContainer.scrollTop = chatContainer.scrollHeight;
@@ -348,8 +422,9 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
         scrollButtonDown.style.display = 'none'; // Hide the button after a short delay
     }, 100); // Hide the button after scrolling to the bottom
 
-      });
-  });
+      }});
+  
+    });
 
 </script>
 {% endblock %}

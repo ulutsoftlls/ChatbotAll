@@ -12,14 +12,14 @@ def formatting_func(example):
     text = f"<s>[KYR] {example} [/KYR] "
     return text
 
-def save_to_csv(prompt, generated_text, filename='output_12000_without_tags.csv'):
+def save_to_csv(prompt, generated_text, time_s, filename='output_36000_with_tags.csv'):
     with open(filename, mode='a', newline='',encoding='utf-8') as file:
         writer = csv.writer(file)
         if file.tell() == 0:
             writer.writerow(['Prompt', 'Generated Text', 'Time'])
 
         generated_text = generated_text[len(prompt):]
-        writer.writerow([prompt, generated_text])
+        writer.writerow([prompt, generated_text, time_s])
 base_model_id = "mistralai/Mistral-7B-v0.1"
 class AnswerGenerater:
     def __init__(self):
@@ -42,7 +42,7 @@ class AnswerGenerater:
 
         self.tokenizer = AutoTokenizer.from_pretrained(base_model_id, add_bos_token=True, trust_remote_code=True)
 
-        self.ft_model = PeftModel.from_pretrained(base_model, "/home/ainura/mistral/checkpoint-12000")
+        self.ft_model = PeftModel.from_pretrained(base_model, "/home/ainura/mistral/checkpoint-36000")
 
     def generate_text(self, prompt):
         time_s = time.time()
@@ -54,12 +54,23 @@ class AnswerGenerater:
             #print(response)
             time_c = time.time() - time_s
             print("time: ", time_c)
-            return response
+            return response, time_c
 
 #eval_prompt = "Караколдо качан кар жаайт?"
-#text_generator = AnswerGenerater()
+text_generator = AnswerGenerater()
 
 #print(out)
+
+
+with open('Quistions2.txt', 'r') as file:
+    for line in file:
+        # Ваш код обработки строки
+        processed_line = line.strip()
+        print(processed_line)
+        out, time_s = text_generator.generate_text(processed_line)
+        save_to_csv(processed_line,out, time_s)
+# Теперь переменная lines содержит все строки из файла
+
 
 #prompts = ["Жашоонун маңызы эмнеде?", "Кандай?", "Караколдо качан кар жаайт?", "Сен канчадасын?","Мага кандай кеңеш бере аласын?", "Кыргызстан жөнүндө эмне билесин?","Бишкек каякта жайгашкан?", "Сен кимсин?","Эмнени жакшы көрөсүн?", "Кайсыл жерлерде эс алсак болот?","Этиш деген эмне?", "Чыңгыз Айтматов ким?","Садыр Жапаров ким?", "Абанын булганышын кантип азайта алабыз?"," Таттыбүбү Турсунбаева кайсы жылы жана кайсы жерде туулган?"]
 
