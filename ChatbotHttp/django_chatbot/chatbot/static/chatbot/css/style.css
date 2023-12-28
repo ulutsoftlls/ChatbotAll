@@ -100,7 +100,7 @@ header .nav-link.selected.active {
     }
 
     .messages-list {
-    height: 410px;
+    height: 510px;
     margin-top: 80px;
         overflow-y: auto;
       padding-left: 0;
@@ -267,7 +267,7 @@ header .nav-link.selected.active {
 
 .button-down::after {
   top: 18px;
-    left: 84px;
+    left: 96px;
   transform: rotate(225deg);
 }
 .loader {
