@@ -93,7 +93,7 @@ header .nav-link.selected.active {
 }
     .messages-box {
         display: block;
-        height: 500px;
+        height: 600px;
         width: 100%;
         padding-left: 25%;
         padding-right: 25%;
@@ -211,7 +211,7 @@ header .nav-link.selected.active {
     display: flex;
       position: absolute;
       flex: 1;
-        top: 87%;
+        top: 89%;
         bottom: 5%;
         width: 15%;
       left: 75%;

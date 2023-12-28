@@ -328,7 +328,7 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
         };
 
         }
-        else {//Mistral
+        else if (model=='Mistral'){//Mistral
           let receivedResponsesCount = 0;
           const messageItem = document.createElement('li');
                   messageItem.classList.add('message', 'received');
@@ -422,7 +422,31 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
         scrollButtonDown.style.display = 'none'; // Hide the button after a short delay
     }, 100); // Hide the button after scrolling to the bottom
 
-      }});
+      }
+        else{
+            const messageItem = document.createElement('li');
+            messageItem.classList.add('message', 'received');
+            messageItem.innerHTML = `
+        <div class="message-text">
+            <div class="message-sender">
+              <b>AI Mamtil ${time}</b>
+            </div>
+            <div class="message-content">
+                ${response}
+            </div>
+        </div>
+          `;
+            messagesList.appendChild(messageItem);
+            document.getElementById("loader").style.display = "none";
+        const chatContainer = document.querySelector(".messages-list");
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+        setTimeout(function() {
+        scrollButtonDown.style.display = 'none'; // Hide the button after a short delay
+    }, 100); // Hide the button after scrolling to the bottom
+        }
+
+
+      });
   
     });
 
