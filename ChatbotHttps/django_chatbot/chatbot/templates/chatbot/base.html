@@ -46,10 +46,10 @@
 {#                        </li>#}
 {#                        {% if user.is_authenticated %}#}
 
-                            <li class="nav-item"
+                            <!-- <li class="nav-item"
                             style="padding-left: 50px">
                             <a class="nav-link" href="http://80.72.180.130:8090/chatbot">{{ 'Тексттен текстке' }}</a>
-                        </li>
+                        </li> -->
                         {% for m in navbar %}
                         <li class="nav-item {% if request.resolver_match.url_name == m.url %}active{% endif %}"
                             style="padding-left: 50px">

@@ -11,20 +11,20 @@
 <div class="chat-container">
   <div class="card flex-grow-1">
 
-{#      <div class="card-header bg-light text-black fixed-top">#}
-{#          <b style="font-size: 20px">AI Ulut Soft</b>#}
-{#{% if user.is_authenticated %}#}
-{#     <span >Кош келиңиз, {{user.username}}</span>#}
-{#    {% endif %}#}
+<!--     <div class="card-header bg-light text-black fixed-top">-->
+<!--        <b style="font-size: 20px">AI Ulut Soft</b>-->
+<!--{% if user.is_authenticated %}-->
+<!--     <span >Кош келиңиз, {{user.username}}</span>-->
+<!--    {% endif %}-->
 
 
-{#            {% if messages %}#}
-{#          <ul class="messages">#}
-{#            {% for message in messages %}#}
-{#              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
-{#            {% endfor %}#}
-{#          </ul>#}
-{#        {% endif %}#}
+<!--           {% if messages %}-->
+<!--          <ul class="messages">-->
+<!--           {% for message in messages %}-->
+<!--            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li> -->
+<!--           {% endfor %}-->
+<!--        </ul>-->
+<!--        {% endif %}-->
 
 
 
@@ -38,7 +38,7 @@
               <b>AI Mamtil</b>
             </div>
             <div class="message-content">
-              Салам, меним атым AI Mamtil. Каалаган нерсени сураңыз
+              Салам, меним атым AI Mamtil. Каалаган нерсени сураңыз!!!
             </div>
           </div>
         </li>
@@ -77,18 +77,27 @@
 
 
     </div>
-    <div class="card-body btn-scroll col-sm-11 ">
-            <div id="scroll-to-bottom" class="button-down"></div>
-{#            <button >Scroll to Bottom</button>#}
+    <div class=" btn-scroll ">
+            <div id="scroll-to-bottom" class="button-down">
+<!--            <button >Scroll to Bottom</button>-->
+            </div>
+
         </div>
+    <div class=" btn-new_chat ">
+      <button id="new_chat" class="btn btn-dark" onclick="cleareHistory()">Жаңы маек куруу</button>
+      </div>
   <form class="message-form">
     {%csrf_token%}
     <div class="input-group">
-      <input type="text" class="form-control message-input" autofocus="autofocus" placeholder="Бул жерге жазыңыз...">
+      <!-- autocomplete="off" -->
+      <input type="text" id="input"  class="form-control message-input" autofocus="autofocus" placeholder="Бул жерге жазыңыз...">
       <div class="input-group-append">
-        <button type="submit" class="btn btn-dark btn-send">Жөнөтүү</button>
+        <button type="submit" id="sub" class="btn btn-dark btn-send">Жөнөтүү</button>
+
       </div>
+
     </div>
+
   </form>
       <div id="alert" class="alert"></div>
 
@@ -98,16 +107,21 @@
 
 
 <script>
-let history = ``
+let history = `\n\nHuman: `+ 'кыргызча жооп бер ' + `\n\nAssistant: Макул кыргызча жооп берем`
 let i = 0
+    function cleareHistory(){
+        location.reload()
+    }
   const messagesList = document.querySelector('.messages-list');
   const messageForm = document.querySelector('.message-form');
   const messageInput = document.querySelector('.message-input');
   const scrollButtonDown = document.getElementById("scroll-to-bottom");
   const messagesListID = document.getElementById("messagesListID");
-    const chatSocket = new WebSocket(
-            'ws://' + window.location.host + '/ws/socket-server/'
-        );
+  const inputForm = document.getElementById("input");
+  const submit = document.getElementById("sub");
+    // const chatSocket = new WebSocket(
+    //         'ws://' + window.location.host + '/ws/socket-server/'
+    //     );
   function showAlert(message) {
         var alertElement = document.getElementById('alert');
         alertElement.innerHTML = message;
@@ -199,9 +213,9 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
     var current_date = date.getFullYear()+"-"+(String(date.getMonth()+1).padStart(2,"0"))+"-"+ (String(date.getDate()).padStart(2, '0'));
 	var current_time = (String(date.getHours()).padStart(2, '0'))+":"+(String(date.getMinutes()).padStart(2, '0'))+":"+ (String(date.getSeconds()).padStart(2, '0'));
 	const date_time = current_date+" "+current_time;
-    {#let currentDay= String(date.getDate()).padStart(2, '0');#}
-    {#let currentMonth = String(date.getMonth()+1).padStart(2,"0");#}
-    {#let currentYear = date.getFullYear();#}
+    // let currentDay= String(date.getDate()).padStart(2, '0');
+    // let currentMonth = String(date.getMonth()+1).padStart(2,"0");
+    // let currentYear = date.getFullYear();
     //const currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
     messageItem.innerHTML = `
         <div class="message-text">
@@ -219,13 +233,13 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
         messageLoading.innerHTML = `<div class="spinner-block" id="loader">
       <div class="spinner spinner-1"></div>
     </div>`;
-{#        messageLoading.innerHTML = `<div class="spinner-tringle" id="loader">#}
-{#  <div class="blob top-tringle"></div>#}
-{#  <div class="blob bottom-tringle"></div>#}
-{#  <div class="blob left-tringle"></div>#}
-{##}
-{#  <div class="blob move-blob"></div>#}
-{#</div>`;#}
+//         messageLoading.innerHTML = `<div class="spinner-tringle" id="loader">#}
+// {#  <div class="blob top-tringle"></div>#}
+// {#  <div class="blob bottom-tringle"></div>#}
+// {#  <div class="blob left-tringle"></div>#}
+// {##}
+// {#  <div class="blob move-blob"></div>#}
+// {#</div>`;
 
         messagesList.appendChild(messageLoading);
 
@@ -234,6 +248,7 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
     const chatContainer = document.querySelector(".messages-list");
         chatContainer.scrollTop = chatContainer.scrollHeight;
     messageInput.value = '';
+
     fetch('/chatbot/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -248,22 +263,76 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
         const message = data.message;
         const model = data.model;
         const time = data.time;
+      
         if (model=='Claudia'){
-                console.log(1111)
+        //         //inputForm.disabled=true;
+        //         //submit.disabled=true;
 
-             //document.getElementById('responseId').innerHTML = '';
-             //let message = document.getElementById('message_id').value;
-             history += `\n\nHuman: `+ message + `\n\nAssistant: `;
-             console.log(message)
-                 if ('WebSocket' in window) {
-              // create websocket connection
-              let ws = new WebSocket('ws://80.72.180.130:3001/websocket');
-              // push a message when the connection is successful, then the server can start pushing data
-              ws.onopen = () => {
-                  console.log('websocket success---');
-                  // Отправка сообщения на сервер
-                  ws.send(history);
-                  const messageItem = document.createElement('li');
+        //      //document.getElementById('responseId').innerHTML = '';
+        //      //let message = document.getElementById('message_id').value;
+
+
+        //      history += `\n\nHuman: `+ message + `\n\nAssistant: `;
+        //      console.log(message)
+        //          if ('WebSocket' in window) {
+        //       // create websocket connection
+        //       let ws = new WebSocket('ws://80.72.180.130:3001/websocket');
+        //       let totalResponsesExpected = 300; // Replace with the actual number of responses you expect
+        //         let receivedResponsesCount = 0;
+        //       // push a message when the connection is successful, then the server can start pushing data
+        //       ws.onopen = () => {
+        //           console.log('websocket success---');
+        //           // Отправка сообщения на сервер
+        //           ws.send(history);
+        //           const messageItem = document.createElement('li');
+        //           messageItem.classList.add('message', 'received');
+        //             i += 1
+        //           messageItem.innerHTML = `
+        //                 <div class="message-text">
+        //                     <div class="message-sender">
+        //                       <b>AI Mamtil ${time}</b>
+        //                     </div>
+        //                     <div class="message-content" id="responseId${i}">
+        //                     </div>
+        //                 </div>
+        //                   `;
+        //          messagesList.appendChild(messageItem);
+        //       }
+        //       ws.onmessage = (message) => {
+
+        //           let data = message.data;
+        //           //let div = document.getElementById('responseId');
+
+        //           let div = document.getElementById('responseId' + i);
+
+        //           div.innerHTML += data
+        //           history += data
+        //             receivedResponsesCount++;
+
+        //                 // Perform the action when all responses are received
+        //                 inputForm.disabled=false;
+        //         submit.disabled=false;
+        //       }
+        //       ws.onclose = (event) => {
+        //           if (event.wasClean) {
+        //               inputForm.disabled = false;
+        //               submit.disabled = false;
+        //           }
+        //           else {
+        //               console.error('wrong');
+        //           }
+        //       }
+        //       ws.onerror = () => {
+        //           console.error('websocket fail');
+        //       }
+        //          } else {
+        //       console.error('dont support websocket');
+        // };
+
+        }
+        else if (model=='Mistral'){//Mistral
+          let receivedResponsesCount = 0;
+          const messageItem = document.createElement('li');
                   messageItem.classList.add('message', 'received');
                     i += 1
                   messageItem.innerHTML = `
@@ -276,27 +345,88 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
                         </div>
                           `;
                  messagesList.appendChild(messageItem);
-              }
-              ws.onmessage = (message) => {
+  let k = 0;
+  //fetch(`http://127.0.0.1:8000/process_text/${message}`)
+  fetch(`https://80.72.180.130:8000/process_text/${message}`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
 
-                  let data = message.data;
+    // Get a ReadableStream from the response body
+    const stream = response.body;
+
+    // Create a text decoder to convert the chunks to a string
+    const textDecoder = new TextDecoder();
+
+    // Read the stream as text
+    const reader = stream.getReader();
+    
+    function readChunk() {
+      return reader.read().then(({ value, done }) => {
+        if (done) {
+          console.log('Stream fully consumed');
+          return;
+        }
+        const chunkText = textDecoder.decode(value);
+        
                   //let div = document.getElementById('responseId');
 
-                  let div = document.getElementById('responseId' + i);
+        let div = document.getElementById('responseId' + i);
+        if(k > 0)
+        {
+          div.innerHTML += chunkText
+          history += data
+          receivedResponsesCount++;
 
-                  div.innerHTML += data
-                  history += data
-
-              }
-              ws.onerror = () => {
-                  console.error('websocket fail');
-              }
-                 } else {
-              console.error('dont support websocket');
-                 };
+                        // Perform the action when all responses are received
+          inputForm.disabled=false;
+          submit.disabled=false;
+          chatContainer.scrollTop = chatContainer.scrollHeight;
+        setTimeout(function() {
+        scrollButtonDown.style.display = 'none'; // Hide the button after a short delay
+    }, 100);
 
         }
-        else {//Mistral
+        k++;
+        
+        // Handle the chunk of data (value) read from the stream
+        
+        console.log('Chunk of data:', chunkText);
+
+        // Continue reading the stream if necessary
+        return readChunk();
+      });
+    }
+
+    return readChunk();
+  })
+  .catch(error => console.error('Error fetching stream:', error));
+
+          
+            //const messageItem = document.createElement('li');
+        //     messageItem.classList.add('message', 'received');
+        //     messageItem.innerHTML = `
+        // <div class="message-text">
+        //     <div class="message-sender">
+        //       <b>AI Mamtil ${time}</b>
+        //     </div>
+        //     <div class="message-content">
+        //         ${response}
+        //     </div>
+        // </div>
+        //   `;
+        //     messagesList.appendChild(messageItem);
+        // }
+        document.getElementById("loader").style.display = "none";
+        const chatContainer = document.querySelector(".messages-list");
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+        setTimeout(function() {
+        scrollButtonDown.style.display = 'none'; // Hide the button after a short delay
+    }, 100); // Hide the button after scrolling to the bottom
+
+      }
+        else{
             const messageItem = document.createElement('li');
             messageItem.classList.add('message', 'received');
             messageItem.innerHTML = `
@@ -310,16 +440,18 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
         </div>
           `;
             messagesList.appendChild(messageItem);
-        }
-        document.getElementById("loader").style.display = "none";
+            document.getElementById("loader").style.display = "none";
         const chatContainer = document.querySelector(".messages-list");
         chatContainer.scrollTop = chatContainer.scrollHeight;
         setTimeout(function() {
         scrollButtonDown.style.display = 'none'; // Hide the button after a short delay
     }, 100); // Hide the button after scrolling to the bottom
+        }
+
 
       });
-  });
+  
+    });
 
 </script>
 {% endblock %}

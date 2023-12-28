@@ -35,6 +35,7 @@ whisper_model = WhisperModel()
 anthropic = Anthropic(api_key='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')
 navbar = [
           # {'title': 'Кирүү', 'url': 'login'},
+          {'title': 'Тексттен текстке', 'url': 'chatbot'},
         {'title': 'Үндөн үнгө', 'url': 'speech'},
     {'title': 'Тексттен үнгө', 'url': 'text_to_speech'},{'title': 'Үндөн текстке', 'url': 'speech_to_text'},
           ]
@@ -511,13 +512,13 @@ def chatbot(request):
         # time.sleep(1)
         # response = 'hi'
         if my_setting_value == 'Mistral':
-            response = search_on_mistal(request.session['message'])
+            #response = search_on_mistal(request.session['message'])
             #response = 'Hi'
             current_time = datetime.now(pytz.timezone('Etc/GMT-6'))
             current_time = str(current_time)[:-13]
-            chat = Chat(user=request.user, message=request.session['message'], response=response)
-            chat.save()
-            return JsonResponse({'message': request.session['message'], 'response': response, 'model': 'Mistral', 'time': current_time})
+            # chat = Chat(user=request.user, message=request.session['message'], response=response)
+            # chat.save()
+            return JsonResponse({'message': request.session['message'], 'response': 'response', 'model': 'Mistral', 'time': current_time})
         elif my_setting_value == 'Claudia':
             #com = search_from_claudia(request.POST['message'])
             current_time = datetime.now(pytz.timezone('Etc/GMT-6'))
