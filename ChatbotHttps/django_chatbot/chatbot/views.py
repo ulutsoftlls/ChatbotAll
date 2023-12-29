@@ -71,7 +71,7 @@ def text_to_speech(request):
                     # Process the received data as needed
                     old_path = '/mnt/ks/Works/bot_text2speech/' + str(received_data['audio_url']) + '.mp3'
                     file_name = str(received_data['audio_url'])[7:]
-                    new_path = '/mnt/ks/Works/Chatbot/django_chatbot/media/' + str(
+                    new_path = '/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/' + str(
                         file_name) + '.mp3'
                     shutil.move(old_path, new_path)
                     request.session['audio_url'] = file_name + '.mp3'
@@ -96,7 +96,7 @@ def text_to_speech(request):
                     # Process the received data as needed
                     old_path = '/mnt/ks/Works/bot_text2speech/' + str(received_data['audio_url']) + '.mp3'
                     file_name = str(received_data['audio_url'])[6:]
-                    new_path = '/mnt/ks/Works/Chatbot/django_chatbot/media/' + str(
+                    new_path = '/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/' + str(
                         file_name) + '.mp3'
                     shutil.move(old_path, new_path)
                     request.session['audio_url'] = file_name + '.mp3'
