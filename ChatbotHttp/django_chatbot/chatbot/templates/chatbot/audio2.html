@@ -13,24 +13,16 @@
             <div class="col-sm-6">
 
                     <br>
-                    <button id="startRecording" class="btn btn-primary " style="margin: 3px">Жаздырууну баштоо</button>
-                        <button id="stopRecording" class="btn btn-primary " style="margin: 3px" disabled>Токтотуу</button>
-                <span id="timer" style="font-size: 20px">00:00</span>
-                
+                    <div id="Recording" class="button rec-effect-1">
+                        <i class="fa fa-microphone fa-2x"></i>
+
+                    </div>
+                    <span id="timer" style="font-size: 20px; top:8px; position: relative;">00:00</span>
                 <p style="font-size: 14px; margin-top: 10px">Эскертүү: Үн жаздыруунун мөөнөтү 1 мүнөттөн ашпоого тийиш</p>
-                
-                
-                
-<!--                        <button class="btn btn-primary " id="sendAudio" style="margin: 3px" disabled>Жөнөтүү</button>-->
 
             </div>
 
             </div>
-
-
-
-
-
 
             <div class="row">
             	<p id="audio_info" style="font-size: 18px; display: none;  ">Аудиофайл:</p>
@@ -39,11 +31,10 @@
                 Браузериңиз аудио элементти колдобойт
                 </audio>
             <div class="col-sm-6" style="margin-top: 20px; width: 250px">
-            <button id="loading" class="btn btn-primary hidden" disabled>
-              <span class="spinner-border spinner-border-sm"></span>
-              Күтө туруңуз...
-            </button>
+                <div class="spinner-block hidden" id="loading2">
+                  <div class="spinner spinner-1"></div>
                 </div>
+            </div>
                 </div>
                 <p id="audio_text" style="font-size: 18px; display: none; margin-top: 5px">Текст:</p>
             <div class="col-sm-12" style="margin-top: 5px; font-size: 4rem">
@@ -55,137 +46,121 @@
             </div>
 </section>
 <script>
-// record-play-audio.js
-
-
-
-
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-
-    let mediaRecorder;
     let audioChunks = [];
-    let audioPlayer = document.getElementById('audioPlayer');
-    let startRecordingButton = document.getElementById('startRecording');
-    let stopRecordingButton = document.getElementById('stopRecording');
-    //let sendAudioButton = document.getElementById('sendAudio');
-    const loading = document.getElementById("loading");
+    let mediaRecorder;
+    let timerInterval; // to store the timer interval reference
+    let elapsedTime = 0; // to track the elapsed time
+    const recordingDuration = 1 * 60 * 1000; // 1 minute in milliseconds
+
+    const recordingButton = document.getElementById('Recording');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const loading2 = document.getElementById("loading2");
     const audio_info = document.getElementById("audio_info");
-  	const audio_text = document.getElementById("audio_text");
-  	const my_text = document.getElementById("myText");
-    let startTime;
-    const recordingDuration = 1 * 61 * 1000; // 1 minutes in milliseconds
-    navigator.mediaDevices.getUserMedia({ audio: true })
-        .then(function (stream) {
-            mediaRecorder = new MediaRecorder(stream);
+    const audio_text = document.getElementById("audio_text");
+    const my_text = document.getElementById("myText");
+    const timer = document.getElementById("timer"); // reference to the timer element
 
-            mediaRecorder.ondataavailable = function (event) {
-                if (event.data.size > 0) {
-                    audioChunks.push(event.data);
-                }
-            };
+    recordingButton.addEventListener('click', () => {
+        if (mediaRecorder && mediaRecorder.state === 'recording') {
+            // Stop recording and send the audio to Django
+            stopRecording();
+        } else {
+            // Start recording
+            startRecording();
+        }
+    });
 
+    function startRecording() {
+        recordingButton.classList.add('active');
+        navigator.mediaDevices.getUserMedia({ audio: true })
+            .then(stream => {
+                mediaRecorder = new MediaRecorder(stream);
 
-            function updateTimer() {
-            const currentTime = new Date().getTime();
-            const elapsedTime = currentTime - startTime;
-            const remainingTime = recordingDuration - elapsedTime;
+                mediaRecorder.ondataavailable = event => {
+                    if (event.data.size > 0) {
+                        audioChunks.push(event.data);
+                    }
+                };
 
-            if (remainingTime < 0) {
-                stopRecording();
-                return;
-            }
-            const seconds = Math.floor(elapsedTime / 1000);
-            const minutes = Math.floor(seconds / 60);
-            const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`;
-            document.getElementById('timer').textContent = formattedTime;
-            }
-
-
-            function stopRecording() {
-            mediaRecorder.stop();
-                stopRecordingButton.disabled = true;
-                startRecordingButton.disabled = false;
-            }
-            mediaRecorder.onstart = () => {
-                startTime = new Date().getTime();
-                updateTimer();
-                timerInterval = setInterval(updateTimer, 1000); // Update timer every second
-                setTimeout(stopRecording, recordingDuration); // Automatically stop recording after 5 minutes
-            };
-            mediaRecorder.onstop = function () {
-                clearInterval(timerInterval);
-                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-                audioPlayer.src = URL.createObjectURL(audioBlob);
-                audioPlayer.style.display = "none";
-                startRecordingButton.disabled = true;
-                //sendAudioButton.disabled = false;
-                // Save the audio to your Django backend here using fetch or XMLHttpRequest
-                // For example, send it to a Django view for processing and storage
-                loading.style.display = "block";
-                audio_info.style.display = "none";
+                mediaRecorder.onstop = () => {
+                    // Convert audio chunks to a Blob and create a FormData
+                    my_text.style.display = "none";
+                    loading2.style.display = "block";
+                    audioPlayer.style.display = "none";
+                    audio_info.style.display = "none";
           		audio_text.style.display = "none";
-          		my_text.style.display = "none";
-                const formData = new FormData();
-                formData.append('audio', audioBlob, 'audio.wav');
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                    const formData = new FormData();
+                    formData.append('audio', audioBlob, 'audio.wav');
 
-                fetch('/speech_to_text/', {
+                    // Send audio to Django view using Fetch API
+                    fetch('/speech_to_text/', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const audioUrl = data.audio_url;
+                            audioPlayer.src = audioUrl;
+                            audioPlayer.type = "audio/wav";
+                            loading2.style.display = "none";
+                            audioPlayer.style.display = "block";
+                            audio_info.style.display = "block";
+                            audio_text.style.display = "block";
+                            var text = data.text;
+                            document.getElementById("myText").innerHTML = text;
+                            my_text.style.display = "block";
+                            document.getElementById("audio").innerHTML = audioUrl;
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
 
-                    method: 'POST',
-                    body: formData,
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
+                    // Clear the recorded audio chunks
+                    audioChunks = [];
+                    // Remove the 'active' class to stop the animation
+                    recordingButton.classList.remove('active');
+                };
 
-                        // window.location.reload(true);
-                    const audioUrl = data.audio_url;
-                    audioPlayer.src = audioUrl;
-                        audioPlayer.type="audio/wav"
-                        loading.style.display = "none";
-                    audioPlayer.style.display = "block";
-			audio_info.style.display = "block";
-          		audio_text.style.display = "block";
-                    var text = data.text;
-                    document.getElementById("myText").innerHTML = text;
-                    my_text.style.display = "block";
-                    startRecordingButton.disabled = false;
-                    document.getElementById("audio").innerHTML = audioUrl;
-                }
-
-                })
-
-
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            };
-            startRecordingButton.addEventListener('click', function () {
-                audioChunks = [];
+                // Start recording
                 mediaRecorder.start();
-                startRecordingButton.disabled = true;
-                stopRecordingButton.disabled = false;
-                //sendAudioButton.disabled = true;
-            });
 
-            stopRecordingButton.addEventListener('click', function () {
-                mediaRecorder.stop();
-                stopRecordingButton.disabled = true;
-                startRecordingButton.disabled = false;
+                // Start the timer
+                startTime = Date.now();
+                timerInterval = setInterval(updateTimer, 1000); // update every second
+            })
+            .catch(error => console.error('Error:', error));
+    }
 
-            });
+    function stopRecording() {
+        mediaRecorder.stop();
 
-            // playRecordingButton.addEventListener('click', function () {
-            //     audioPlayer.play();
-            // });
+        // Stop the timer
+        clearInterval(timerInterval);
+        timer.textContent = "00:00";
+        // Remove the 'active' class to stop the animation
+        recordingButton.classList.remove('active');
+    }
 
-        })
-        .catch(function (error) {
-            console.error('Error accessing the microphone:', error);
-        });
+    function updateTimer() {
+        // Calculate elapsed time and update the timer element
+        elapsedTime = Date.now() - startTime;
+        const minutes = Math.floor(elapsedTime / (60 * 1000));
+        const seconds = Math.floor((elapsedTime % (60 * 1000)) / 1000);
+
+        // Display the time in MM:SS format
+        const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        timer.textContent = formattedTime;
+
+        // Check if the recording duration is reached and stop recording
+        if (elapsedTime >= recordingDuration) {
+            stopRecording();
+        }
+    }
 } else {
-    console.error('MediaRecorder API not supported in this browser.');
+    console.error('Web Audio API is not supported in this browser.');
 }
-
 
 </script>
 {% endblock %}
