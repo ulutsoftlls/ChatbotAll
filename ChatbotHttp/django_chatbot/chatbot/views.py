@@ -32,7 +32,7 @@ import pytz
 import os
 
 #whisper_model = WhisperModel()
-anthropic = Anthropic(api_key='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')
+anthropic = Anthropic(api_key='')
 navbar = [
           # {'title': 'Кирүү', 'url': 'login'},
         {'title': 'Тексттен текстке', 'url': 'chatbot'},
