@@ -18,7 +18,7 @@
                 <p id="is_not_valid_info2" style="color: red; display: none;">Текст 5000 символдон ашпоого тийиш </p>
                 <p style="font-size: 18px;">Tекст жазыңыз:</p>
                 <p style="font-size: 14px; margin-top: 10px; margin-bottom: 0"> Эскертүү: Тексттин узундугу 5000 символдон ашпоого тийиш</p>
-                <p style="font-size: 14px; margin-top: 0">Символдордун саны: <span id="charCount">0</span></p>
+                <p style="font-size: 14px; margin-top: 0"> <span id="charCount">0</span>/5000</p>
 
 
                 <form method="post" action="text_to_speech" enctype="multipart/form-data" >
@@ -26,13 +26,13 @@
                 {{ form.text }}
                     <br>
                     <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-1">
                     <!--{{ form.captcha }}
                     <p id="captcha_error" style="color: red; display: none;">Капчаны толтуруу талап кылынат </p>
 
                     <p id="other_error" style="color: red; display: none;">Форма толтурууда ката чыкты. Сураныч, кайра аракет кылыңыз </p>-->
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                     <p style="font-size: 18px;">Үн тандаңыз: </p>
                         <label class="radio">
                           <input type="radio"  id="man" value="man" name="choose">
@@ -42,8 +42,9 @@
                           <input type="radio" checked="checked" name="choose" id="woman" value="woman" required>
                           <span>Нурай</span>
                         </label>
-
-                        <button style="margin-left: 0" type="submit" class="btn btn-primary analyzer-button" id="submitBtn">Жөнөтүү</button>
+                    </div>
+                    <div class="col-sm-4">
+                        <button style="margin-left: 0" type="submit" class="btn btn-primary " id="submitBtn">Жөнөтүү</button>
                         <button id="loading2" class="btn btn-primary analyzer-button hidden" style="margin-left: 0; width: 170px">
 			      <span class="spinner-border spinner-border-sm" ></span>
 			      Күтө туруңуз...
@@ -73,8 +74,10 @@
             </div>
         </div>
     </div>
+    <br><br><br><br>
 </section>
-<br><br><br><br>
+
+
 <script>
 function countCharacters() {
         var textarea = document.querySelector('textarea[name="text"]');

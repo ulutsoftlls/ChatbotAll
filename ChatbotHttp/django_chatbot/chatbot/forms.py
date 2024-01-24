@@ -33,7 +33,8 @@ class TextForm(forms.ModelForm):
         model = Audios
         fields = ['text']
         widgets = {
-            'text': forms.Textarea(attrs={ "style": "height:200px; resize: vertical; overflow-y: auto; width:80%",'class': 'form-control', 'required':'required'})
+            'text': forms.Textarea(attrs={ "style": "height:200px; border-color: #4d4d4d; border-width: 2px; background: #e6e6e6; resize: vertical; overflow-y: auto; width:80%",'class': 'form-control', 'required':'required',
+                                           'placeholder': 'Tекст жазыңыз...'})
 
         }
     #captcha = ReCaptchaField(label='')

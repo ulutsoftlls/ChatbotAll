@@ -25,20 +25,24 @@ from django.contrib import messages
 from datetime import datetime, timedelta
 from constance import config
 #from claudia import search_from_claudia
-from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
-from chatbot.forms import *
+#from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
+from .forms import *
 #from chatbot.speech2text import WhisperModel
 import pytz
 import os
 
 #whisper_model = WhisperModel()
-anthropic = Anthropic(api_key='')
+
+#anthropic = Anthropic(api_key='')
 navbar = [
           # {'title': 'Кирүү', 'url': 'login'},
         {'title': 'Тексттен текстке', 'url': 'chatbot'},
-    # {'title': 'Speech to speech', 'url': 'https://80.72.180.130:8000/speech'},
-    # {'title': 'Тексттен үнгө', 'url': 'https://80.72.180.130:8000/text_to_speech'},{'title': 'Үндөн текстке', 'url': 'https://80.72.180.130:8000/speech_to_text'},
+    {'title': 'Speech to speech', 'url': 'speech'},
+    {'title': 'Тексттен үнгө', 'url': 'text_to_speech'},{'title': 'Үндөн текстке', 'url': 'speech_to_text'},
           ]
+
+text_error = '<ul class="errorlist"><li>text<ul class="errorlist"><li>Кайра жазыңыз</li></ul></li></ul>'
+captcha_error = '<ul class="errorlist"><li>captcha<ul class="errorlist"><li>Это поле обязательно для заполнения.</li></ul></li></ul>'
 def home(request):
     title = 'Башкы бет'
 
@@ -48,6 +52,19 @@ def home(request):
     }
     return render(request, 'chatbot/index.html', context=context)
 
+def get_data_from_whisper(requests, url):
+    api_url = 'http://127.0.0.1:5050/api/receive_data'  # Replace with your Flask API's URL
+    data_to_send = {
+        "audio_url": url}  # Replace with your data
+    response = requests.post(api_url, json=data_to_send)
+    if response.status_code == 200:
+        received_data = response.json()
+        text = str(received_data['text'])
+        # print(request.session['text_record'])
+    else:
+        print('error in whisper')
+        return JsonResponse({"error": "Failed to send/receive data"}, status=500)
+    return text
 
 @csrf_protect
 @csrf_exempt
@@ -57,7 +74,11 @@ def text_to_speech(request):
         text = request.POST['text']
         print(text)
         choose = request.POST['choose']
+        print(choose)
+
         form = TextForm(request.POST)
+        print(form.errors)
+        print(1111)
         if form.is_valid():
             request.session['text'] = text
             api_url = 'http://127.0.0.1:6000/api/receive_data'  # Replace with your Flask API's URL
@@ -131,13 +152,22 @@ def text_to_speech(request):
     }
     return render(request, "chatbot/audio.html", context=context)
 
-
+@csrf_protect
+@csrf_exempt
+def whisper_stream(request):
+    context = {
+            'title': 'Үндөн текстке',
+            'navbar': navbar}
+    return render(request, "chatbot/audio5.html", context=context)
+        
+        
 @csrf_protect
 @csrf_exempt
 def speech_to_text(request):
     context = {}
     if request.method == 'POST' and request.FILES.get('audio'):
         audio_file = request.FILES['audio']
+        print(audio_file)
         upload_dir = ''
         N = 4
 
@@ -160,13 +190,13 @@ def speech_to_text(request):
         request.session['audio_url_record'] = str(request.session['audio_url_record'][:-4]) + '_new.wav'
 
         # st = time.time()
-        request.session['text_record'] = whisper_model.generate_text_from_audio(
-            settings.MEDIA_ROOT + request.session['audio_url_record'])
+        request.session['text_record'] = get_data_from_whisper(requests,settings.MEDIA_ROOT + request.session['audio_url_record'])
+
         # et = time.time()
         # elapsed_time = et - st
         # print('Execution time:', elapsed_time, 'seconds')
         print(request.session['text_record'])
-        Audios.objects.create(audio_file=request.session['audio_url_record'], text=request.session['text_record'])
+        #Audios.objects.create(audio_file=request.session['audio_url_record'], text=request.session['text_record'])
         request.session['audio_url_record'] = MEDIA_URL + request.session['audio_url_record']
         request.session['audio_save'] = True
         context = {
@@ -371,19 +401,7 @@ def get_data_from_tts(request, gender, text, audio_url):
         print('error')
         return JsonResponse({"error": "Failed to send/receive data"}, status=500)
     return request.session[audio_url]
-def get_data_from_whisper(requests, url):
-    api_url = 'http://127.0.0.1:7000/api/receive_data'  # Replace with your Flask API's URL
-    data_to_send = {
-        "audio_url": url}  # Replace with your data
-    response = requests.post(api_url, json=data_to_send)
-    if response.status_code == 200:
-        received_data = response.json()
-        text = str(received_data['text'])
-        # print(request.session['text_record'])
-    else:
-        print('error in whisper')
-        return JsonResponse({"error": "Failed to send/receive data"}, status=500)
-    return text
+
 
 
 @csrf_protect
@@ -505,7 +523,7 @@ def chatbot(request):
 
 
     if request.method == 'POST':
-        request.session['message'] = request.POST['message']
+        message = request.POST['message']
         my_setting_value = config.Model
         print(my_setting_value)
         #print(my_setting_value)
@@ -517,16 +535,21 @@ def chatbot(request):
         #     current_time = datetime.now(pytz.timezone('Etc/GMT-6'))
         #     current_time = str(current_time)[:-13]
         #     return JsonResponse({'message': request.session['message'], 'response': response, 'time': current_time})
-        time.sleep(1)
-        response = 'hi'
+
+        #response = 'hi'
         if my_setting_value == 'Mistral':
             #response = search_on_mistal(request.session['message'])
-            response = 'Hi'
+            #response = 'Hi'
+            message = message.strip()
+            if not message[-1] == '?':
+                message = message + '?'
+
+            request.session['message'] = message
             current_time = datetime.now(pytz.timezone('Etc/GMT-6'))
             current_time = str(current_time)[:-13]
             #chat = Chat(user=request.user, message=request.session['message'], response=response)
             #chat.save()
-            return JsonResponse({'message': request.session['message'], 'response': response, 'model': 'Mistral2', 'time': current_time})
+            return JsonResponse({'message': request.session['message'], 'response': "response", 'model': 'Mistral', 'time': current_time})
         elif my_setting_value == 'Claudia':
             #com = search_from_claudia(request.POST['message'])
             current_time = datetime.now(pytz.timezone('Etc/GMT-6'))

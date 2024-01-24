@@ -107,8 +107,10 @@
 
 
 <script>
-let history = `\n\nHuman: `+ 'кыргызча жооп бер ' + `\n\nAssistant: Макул кыргызча жооп берем`
+let history_for_claudia = `\n\nHuman: `+ 'кыргызча жооп бер ' + `\n\nAssistant: Макул кыргызча жооп берем`
+let history = `<s> `
 let i = 0
+let receivedResponsesCount = 0;
     function cleareHistory(){
         location.reload()
     }
@@ -119,9 +121,9 @@ let i = 0
   const messagesListID = document.getElementById("messagesListID");
   const inputForm = document.getElementById("input");
   const submit = document.getElementById("sub");
-    const chatSocket = new WebSocket(
-            'ws://' + window.location.host + '/ws/socket-server/'
-        );
+    //const chatSocket = new WebSocket(
+    //        'ws://' + window.location.host + '/ws/socket-server/'
+    //    );
   function showAlert(message) {
         var alertElement = document.getElementById('alert');
         alertElement.innerHTML = message;
@@ -192,7 +194,7 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
     if (message.length === 0) {
       return;
     }
-    else if (message.length > 100){
+    else if (message.length > 500){
         showAlert('Билдирүүнүн узундугу 100 символдон ашпашы керек');
             setTimeout(function () {
                 hideAlert();
@@ -329,7 +331,7 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
 
         }
         else if (model=='Mistral'){//Mistral
-          let receivedResponsesCount = 0;
+          let answer = '';
           const messageItem = document.createElement('li');
                   messageItem.classList.add('message', 'received');
                     i += 1
@@ -344,12 +346,26 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
                           `;
                  messagesList.appendChild(messageItem);
   let k = 0;
-  fetch(`http://127.0.0.1:8000/process_text/${message}`)
+  let message_with_tag = `<s> [KYR] `+ message + ` [/KYR]`;
+  let full_answer = '';
+  //history += `'role': 'user', 'content': '`+ message + `' \n`
+  //history += `'role': 'assistant', 'content': `;
+<!--  if (receivedResponsesCount > 0){-->
+<!--  //history = history.replace(/\[\/?KYR\]/g, '');-->
+<!--  //history = history.replace(/\[\/KYR\]/, '');-->
+<!--  //replace(/\[\/KYR\]/, '');-->
+<!--       //history = history.replace(/\[KYR\]/, '');-->
+<!--       //history += message + ` [/KYR] `-->
+<!--       console.log(history);-->
+<!--       }-->
+  fetch(`http://127.0.0.1:8000/process_text/${message_with_tag}`)
   .then(response => {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
+
+    //console.log(history);
     // Get a ReadableStream from the response body
     const stream = response.body;
 
@@ -362,6 +378,11 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
     function readChunk() {
       return reader.read().then(({ value, done }) => {
         if (done) {
+
+
+          //history += `</s> \n`
+          console.log('fully answer:');
+          console.log(full_answer);
           console.log('Stream fully consumed');
           return;
         }
@@ -373,8 +394,8 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
         if(k > 0)
         {
           div.innerHTML += chunkText
-          history += data
-          receivedResponsesCount++;
+          full_answer += chunkText
+          //receivedResponsesCount++;
 
                         // Perform the action when all responses are received
           inputForm.disabled=false;

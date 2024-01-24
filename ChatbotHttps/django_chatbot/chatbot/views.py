@@ -31,6 +31,7 @@ from chatbot.forms import *
 import pytz
 import os
 
+
 #whisper_model = WhisperModel()
 anthropic = Anthropic(api_key='')
 navbar = [
