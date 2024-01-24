@@ -361,25 +361,133 @@ scrollButtonDown.addEventListener('click', scrollToBottom);
 
     // Read the stream as text
     const reader = stream.getReader();
-    
+    let isFirstStringProcessed = false;
     function readChunk() {
       return reader.read().then(({ value, done }) => {
         if (done) {
           console.log('Stream fully consumed');
           return;
         }
-        const chunkText = textDecoder.decode(value);
         
-                  //let div = document.getElementById('responseId');
+        let chunkText = textDecoder.decode(value);
+        if (!isFirstStringProcessed) {
+          chunkText = chunkText.replace(/<\/?s>/g, "");
+            isFirstStringProcessed = true;
+          }
+          
+        //let div = document.getElementById('responseId');
+        
+        let div = document.getElementById('responseId' + i);
+        //if(k >= 0)
+        //{
+          div.innerHTML += chunkText
+          //history += data
+          //receivedResponsesCount++;
 
+            // Perform the action when all responses are received
+          inputForm.disabled=false;
+          submit.disabled=false;
+          chatContainer.scrollTop = chatContainer.scrollHeight;
+        setTimeout(function() {
+        scrollButtonDown.style.display = 'none'; // Hide the button after a short delay
+    }, 100);
+
+        //}
+        //k++;
+        
+        // Handle the chunk of data (value) read from the stream
+        
+        console.log('Chunk of data:', chunkText);
+
+        // Continue reading the stream if necessary
+        return readChunk();
+      });
+    }
+
+    return readChunk();
+  })
+  .catch(error => console.error('Error fetching stream:', error));
+
+          
+            //const messageItem = document.createElement('li');
+        //     messageItem.classList.add('message', 'received');
+        //     messageItem.innerHTML = `
+        // <div class="message-text">
+        //     <div class="message-sender">
+        //       <b>AI Mamtil ${time}</b>
+        //     </div>
+        //     <div class="message-content">
+        //         ${response}
+        //     </div>
+        // </div>
+        //   `;
+        //     messagesList.appendChild(messageItem);
+        // }
+        document.getElementById("loader").style.display = "none";
+        const chatContainer = document.querySelector(".messages-list");
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+        setTimeout(function() {
+        scrollButtonDown.style.display = 'none'; // Hide the button after a short delay
+    }, 100); // Hide the button after scrolling to the bottom
+
+      }
+      else if (model=='Mistral2'){//Mistral
+          let receivedResponsesCount = 0;
+          const messageItem = document.createElement('li');
+                  messageItem.classList.add('message', 'received');
+                    i += 1
+                  messageItem.innerHTML = `
+                        <div class="message-text">
+                            <div class="message-sender">
+                              <b>AI Mamtil ${time}</b>
+                            </div>
+                            <div class="message-content" id="responseId${i}">
+                            </div>
+                        </div>
+                          `;
+                 messagesList.appendChild(messageItem);
+  let k = 0;
+  //let message_with_tag = `<s> [KYR] `+message+` [/KYR]`;
+  fetch(`https://80.72.180.130:7000/process_text/${message}`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    // Get a ReadableStream from the response body
+    const stream = response.body;
+
+    // Create a text decoder to convert the chunks to a string
+    const textDecoder = new TextDecoder();
+
+    // Read the stream as text
+    const reader = stream.getReader();
+    let isFirstStringProcessed = false;
+    function readChunk() {
+      return reader.read().then(({ value, done }) => {
+        if (done) {
+          console.log('Stream fully consumed');
+          return;
+        }
+        
+        
+        let chunkText = textDecoder.decode(value);
+        if (!isFirstStringProcessed) {
+          chunkText = chunkText.replace(/<\/?s>/g, "");
+            isFirstStringProcessed = true;
+          }
+          
+          
+        //let div = document.getElementById('responseId');
+        
         let div = document.getElementById('responseId' + i);
         if(k > 0)
         {
           div.innerHTML += chunkText
-          history += data
-          receivedResponsesCount++;
+          //history += data
+          //receivedResponsesCount++;
 
-                        // Perform the action when all responses are received
+            // Perform the action when all responses are received
           inputForm.disabled=false;
           submit.disabled=false;
           chatContainer.scrollTop = chatContainer.scrollHeight;
