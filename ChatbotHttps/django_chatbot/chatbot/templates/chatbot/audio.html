@@ -16,71 +16,80 @@
 
                 <br>
                 <p id="is_not_valid_info2" style="color: red; display: none;">Текст 5000 символдон ашпоого тийиш </p>
-                <p style="font-size: 18px;">Tекст жазыңыз:</p>
-                <p style="font-size: 14px; margin-top: 10px; margin-bottom: 0"> Эскертүү: Тексттин узундугу 5000 символдон ашпоого тийиш</p>
-                <p style="font-size: 14px; margin-top: 0">Символдордун саны: <span id="charCount">0</span></p>
+                
+                
 
-
+                <div class="row">
+                  <div class="col-sm-6">
                 <form method="post" action="text_to_speech" enctype="multipart/form-data" >
                     {% csrf_token %}
                 {{ form.text }}
+                <p style="font-size: 16px; margin-left: 535px"> <span id="charCount">   0</span>/5000</p>
                     <br>
-                    <div class="row">
-                    <div class="col-sm-4">
+                  </div>
+                    
                     <!--{{ form.captcha }}
                     <p id="captcha_error" style="color: red; display: none;">Капчаны толтуруу талап кылынат </p>
 
                     <p id="other_error" style="color: red; display: none;">Форма толтурууда ката чыкты. Сураныч, кайра аракет кылыңыз </p>-->
-                    </div>
-                    <div class="col-sm-4">
+                    
+                    <div class="col-sm-3">
                     <p style="font-size: 18px;">Үн тандаңыз: </p>
+                    <div class="radio-container">
                         <label class="radio">
-                          <input type="radio"  id="man" value="1" name="choose">
+                          <input type="radio"  id="man" value="man" name="choose">
                           <span>Нурбек</span>
                         </label>
                         <label class="radio">
-                          <input type="radio" checked="checked" name="choose" id="woman" value="2" required>
+                          <input type="radio" checked="checked" name="choose" id="woman" value="woman" required>
                           <span>Нурай</span>
                         </label>
-
-                        <button style="margin-left: 0" type="submit" class="btn btn-primary analyzer-button" id="submitBtn">Жөнөтүү</button>
-                        <button id="loading2" class="btn btn-primary analyzer-button hidden" style="margin-left: 0; width: 170px">
-			      <span class="spinner-border spinner-border-sm" ></span>
-			      Күтө туруңуз...
-			    </button>
-			</div>
-
+                      </div>
+                      <br><br>
+                        <button style="margin-left: 0" type="submit" class="btn btn-primary " id="submitBtn">Жөнөтүү</button>
+                        <div class="spinner-block hidden" id="loading2">
+                          <div class="spinner spinner-1"></div>
+                        
+                        </div>
+                        <br><br>
+                        <p id="audio_info" style="font-size: 18px; display: none;  ">Аудиофайл:</p>
+                            <div id="audio_speed" class="hidden">
+                            <input type="range" class="form-range" id="speedRange" min="0.1"
+                                  max="2.0" step="0.1" value="1.0" list="markers" style="width: 250px;">
+                            <datalist id="markers">
+                              <option value="0.1" label="0.1x"></option>
+                              <option value="0.5" label="0.5x"></option>
+                              <option value="1.0" label="1.0x"></option>
+                              <option value="1.5" label="1.5x"></option>
+                              <option value="2.0" label="2.0x"></option>
+                            </datalist>
+                          <p>Ылдамдык: <output id="speed_value"></output>x</p>
+                          </div>
+                            <audio controls id="audioPlayer" style="display: none; width: 380px;">
+                            <source src="" type="audio/wav">
+                            Браузериңиз аудио элементти колдобойт.
+                            </audio>
+                  </div>
+                  
                 </form>
-                <p id="audio_info" style="font-size: 18px; display: none;  ">Аудиофайл:</p>
-                <div id="audio_speed" class="hidden">
-                <input type="range" class="form-range" id="speedRange" min="0.1"
-                       max="2.0" step="0.1" value="1.0" list="markers" style="width: 250px;">
-                <datalist id="markers">
-		      <option value="0.1" label="0.1x"></option>
-		      <option value="0.5" label="0.5x"></option>
-		      <option value="1.0" label="1.0x"></option>
-		      <option value="1.5" label="1.5x"></option>
-		      <option value="2.0" label="2.0x"></option>
-		    </datalist>
-		        <p>Ылдамдык: <output id="speed_value"></output>x</p>
-		 </div>
-                <audio controls id="audioPlayer" style="display: none; width: 380px;">
-                <source src="" type="audio/wav">
-                Браузериңиз аудио элементти колдобойт.
-                </audio>
+              </div>
+                
 
             </div>
             </div>
         </div>
     </div>
+    <br><br><br><br>
 </section>
-<br><br><br><br>
+
+
 <script>
 function countCharacters() {
         var textarea = document.querySelector('textarea[name="text"]');
         var charCount = document.getElementById("charCount");
         var text = textarea.value;
-        var count = text.length;
+        var normalizedText = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+        var count = normalizedText.length;
         charCount.textContent = count;
     }
 
@@ -91,18 +100,6 @@ function countCharacters() {
     countCharacters();
 
         document.addEventListener("DOMContentLoaded", function () {
-            const players = Array.from(document.querySelectorAll('audio')).map(player => {
-            return new Plyr(player, {
-                controls: ['play', 'progress', 'current-time', 'mute', 'settings', 'speed'],
-          speed: {
-        selected: 1, // Выбранная скорость по умолчанию (1x)
-        options: [0.5, 1, 1.5, 2] // Варианты доступных скоростей
-      }
-            });
-        });
-     players.forEach(player => {
-                player.elements.container.style.display = 'none';
-            });
         const speedRange = document.getElementById('speedRange');
     let speed = 0;
     const value = document.querySelector("#speed_value");
@@ -110,12 +107,11 @@ function countCharacters() {
     const audio_speed = document.getElementById("audio_speed");
   const form = document.querySelector("form");
   const sendButton = document.getElementById("submitBtn");
-  const loading = document.getElementById("loading2");
+  //const loading = document.getElementById("loading2");
+  const loading2 = document.getElementById("loading2");
   const audioElement = document.getElementById("audioPlayer");
   const audio_info = document.getElementById("audio_info");
   const is_not_valid_info2 = document.getElementById("is_not_valid_info2");
-  const plyrAudioContainer = document.querySelector('.plyr--audio');
-    plyrAudioContainer.style.display = 'none';
 	//const captcha_error_info = document.getElementById("captcha_error");
 	//const other_error_info = document.getElementById("other_error");
 	value.textContent = input.value;
@@ -132,12 +128,9 @@ function countCharacters() {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    loading.style.display = "block";
-    loading.disabled = true;
-    plyrAudioContainer.style.display = 'none';
-                players.forEach(player => {
-                player.elements.container.style.display = 'none';
-            });
+    // loading.style.display = "block";
+    // loading.disabled = true;
+    loading2.style.display = "block";
     sendButton.style.display = "none";
 
     const formData = new FormData(form);
@@ -172,7 +165,7 @@ function countCharacters() {
           else if (captcha_error){
           //grecaptcha.reset();
           sendButton.style.display = "block";
-          loading.style.display = "none";
+          loading2.style.display = "none";
           //other_error_info.style.display = "none";
           //captcha_error_info.style.display = "block";
           	is_not_valid_info2.style.display = "none";
@@ -190,11 +183,7 @@ function countCharacters() {
           //other_error_info.style.display = "none";
           audio_info.style.display = "block";
           audio_speed.style.display = "block";
-            {#audioElement.style.display = "block";#}
-          plyrAudioContainer.style.display = 'block';
-                    players.forEach(player => {
-                player.elements.container.style.display = 'block';
-            });
+          audioElement.style.display = "block";
           if (is_man){
           	audioElement.playbackRate = 1.1;
           }
@@ -206,14 +195,12 @@ function countCharacters() {
 
         } else {
           // Обработайте ошибку, если необходимо
-          loading.style.display = "none";
-        loading.disabled = false;
+          loading2.style.display = "none";
         sendButton.style.display = "block";
           console.error("Произошла ошибка при отправке файла");
         }
 
-        loading.style.display = "none";
-        loading.disabled = false;
+        loading2.style.display = "none";
         sendButton.style.display = "block";
       }
     };

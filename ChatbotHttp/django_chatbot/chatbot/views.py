@@ -43,6 +43,7 @@ navbar = [
 
 text_error = '<ul class="errorlist"><li>text<ul class="errorlist"><li>Кайра жазыңыз</li></ul></li></ul>'
 captcha_error = '<ul class="errorlist"><li>captcha<ul class="errorlist"><li>Это поле обязательно для заполнения.</li></ul></li></ul>'
+
 def home(request):
     title = 'Башкы бет'
 

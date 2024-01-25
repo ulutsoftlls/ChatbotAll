@@ -33,13 +33,16 @@ class TextForm(forms.ModelForm):
         model = Audios
         fields = ['text']
         widgets = {
-            'text': forms.Textarea(attrs={ "style": "height:200px; resize: vertical; overflow-y: auto; width:80%",'class': 'form-control', 'required':'required'})
+            'text': forms.Textarea(attrs={ "style": "height:400px; border-color: #4d4d4d; border-width: 2px; background: #e6e6e6; resize: vertical; overflow-y: auto; width:600px",'class': 'form-control', 'required':'required',
+                                           'placeholder': 'Tекст жазыңыз...\nЭскертүү: Тексттин узундугу 5000 символдон ашпоого тийиш'})
 
         }
     #captcha = ReCaptchaField(label='')
     def clean_text(self):
         text = str(self.cleaned_data['text'])
-        if len(text) > 5000:
+        normalized_text = text.replace('\r\n', '\n').replace('\r', '\n')
+        print(len(normalized_text))
+        if len(normalized_text) > 5000:
             raise ValidationError('Кайра жазыңыз')
         return text
     def __init__(self, *args, **kwargs):

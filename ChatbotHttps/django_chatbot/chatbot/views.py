@@ -40,6 +40,10 @@ navbar = [
         {'title': 'Үндөн үнгө', 'url': 'speech'},
     {'title': 'Тексттен үнгө', 'url': 'text_to_speech'},{'title': 'Үндөн текстке', 'url': 'speech_to_text'},
           ]
+
+text_error = '<ul class="errorlist"><li>text<ul class="errorlist"><li>Кайра жазыңыз</li></ul></li></ul>'
+captcha_error = '<ul class="errorlist"><li>captcha<ul class="errorlist"><li>Это поле обязательно для заполнения.</li></ul></li></ul>'
+
 def home(request):
     title = 'Башкы бет'
 
@@ -76,7 +80,7 @@ def text_to_speech(request):
         if form.is_valid():
             request.session['text'] = text
             api_url = 'http://0.0.0.0:8089/api/tts'  # Replace with your Flask API's URL
-            if choose == '1':
+            if choose == 'man':
                 data_to_send = {"speaker_id": "1", "text": text}  # Replace with your data
 
                 response = requests.post(api_url, json=data_to_send)
@@ -242,7 +246,7 @@ def search_on_mistal(text):
     #text = 'Ты кто такой?'
     # if not text[-1] == '?':
     #     text = text + '?'
-    response = requests.get(f"https://80.72.180.130:8000/process_text/{text}", stream=True, verify=False)
+    response = requests.get(f"https://80.72.180.130:7000/process_text/{text}", stream=True, verify=False)
 
 
     l = len(text)
@@ -435,14 +439,17 @@ def speech(request):
         print(f'Input: {request.session["text_record"]}')
         # res = search_from_claudia(request.session['text_record'])
         # print(f'Answer from Claudia: {res}')
-        res = search_on_mistal(request.session['text_record'])
-        print(f'Answer from Mistral: {res}')
+
+        # res = search_on_mistal(request.session['text_record'])
+        # print(f'Answer from Mistral: {res}')
+        res = request.session['text_record']
+
         # res_inter = search_on_internet(request.session['text_record'])
         # print(f'Answer from Internet: {res_inter}')
         #res_inter = translate_text(res_inter)
         #print(f'Translated: {res_inter}')
 
-        if request.POST['choose'] == '1':
+        if request.POST['choose'] == 'man':
 
             request.session['audio_url'] = get_data_from_tts(request, '1', res, 'audio_url')
             # Audios.objects.create(text=request.session['text'], audio_file=request.session['audio_url'])
