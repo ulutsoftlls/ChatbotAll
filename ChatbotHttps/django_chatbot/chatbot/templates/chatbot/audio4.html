@@ -14,32 +14,25 @@
 
                     <br>
                 <div id="Recording" class="button rec-effect-1">
-                        <i class="fa fa-microphone fa-2x"></i>
+                        <i class="fa fa-microphone fa-3x"></i>
 
                     </div>
-<!--                    <button id="startRecording2" class="btn" style="margin: 3px; color: black;-->
-<!--    background-color: #bfbfbf;-->
-<!--    border-color: #666666; border-width: 2px">Жаздырууну баштоо</button>-->
-<!--                        <button id="stopRecording2" class="btn btn-primary " style="margin: 3px; color: black;-->
-<!--    background-color: #bfbfbf;-->
-<!--    border-color: #666666; border-width: 2px" disabled>Токтотуу</button>-->
-                <span id="timer" style="font-size: 20px;top:8px; position: relative; padding-left: 15px;">00:00</span>
-                
-                <p style="font-size: 14px; margin: 0;padding-top: 10px">Эскертүү: </p>
+
+                <span id="timer" style="font-size: 25px;top:8px; position: relative; padding-left: 20px;">00:00</span>
+                <br><br><br>
+                <p style="font-size: 14px; margin: 0;padding-top: 10px;padding-bottom: 10px">Эскертүү: </p>
                 <p style="font-size: 14px;">Үн жаздыруунун мөөнөтү 1 мүнөттөн ашпоого тийиш</p>
-                <p style="font-size: 18px;">Үн тандаңыз: </p>
+                <p style="font-size: 22px;">Үн тандаңыз: </p>
                 <div class="radio-container">
                 <label class="radio">
                     <input type="radio" id="man" value="man" name="choose">
                     <span>Нурбек</span>
                 </label>
-                <label class="radio">
+                <label class="radio" style="margin-left: 40px;">
                     <input type="radio" checked="checked" name="choose" id="woman" value="woman" required>
                     <span>Нурай</span>
                 </label>
             </div>
-                
-<!--                        <button class="btn btn-primary " id="sendAudio" style="margin: 3px" disabled>Жөнөтүү</button>-->
 
             </div>
             
@@ -54,6 +47,7 @@
                 Браузериңиз аудио элементти колдобойт
                 </audio>
                 </div>
+                
                 <div class="col-sm-4" style="margin-top: 20px;">
                 <p id="audio_info2" style="font-size: 18px; display: none;">Жооп:</p>
                 <audio controls id="audioPlayer2" class="hidden" style="width: 400px; margin-top: 5px">
@@ -67,10 +61,7 @@
             
             
                 </div>
-                <p id="audio_text" style="font-size: 18px; display: none; margin-top: 5px">Текст:</p>
-            <div class="col-sm-12" style="margin-top: 5px; font-size: 4rem">
-                <p> <span id="myText"> </span></p>
-                </div>
+                
 
 
         </div>
@@ -104,8 +95,6 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     const loading2 = document.getElementById("loading2");
     const audio_info = document.getElementById("audio_info");
     const audio_info2 = document.getElementById("audio_info2");
-    const audio_text = document.getElementById("audio_text");
-    const my_text = document.getElementById("myText");
     const timer = document.getElementById("timer"); // reference to the timer element
     const man = document.getElementById("man");
 const woman = document.getElementById("woman");
@@ -157,8 +146,6 @@ let choose = 'woman';
                 audio_info.style.display = "none";
                 audio_info2.style.display = "none";
                 //audio_info3.style.display = "none";
-          	audio_text.style.display = "none";
-          	my_text.style.display = "none";
           		
                     const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
                     const formData = new FormData();

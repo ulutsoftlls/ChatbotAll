@@ -20,11 +20,11 @@
                 
 
                 <div class="row">
-                  <div class="col-sm-6">
+                  <div class="col-sm-8">
                 <form method="post" action="text_to_speech" enctype="multipart/form-data" >
                     {% csrf_token %}
                 {{ form.text }}
-                <p style="font-size: 16px; margin-left: 535px"> <span id="charCount">   0</span>/5000</p>
+                <p style="font-size: 16px; margin-left: 735px"> <span id="charCount">   0</span>/5000</p>
                     <br>
                   </div>
                     
@@ -34,25 +34,25 @@
                     <p id="other_error" style="color: red; display: none;">Форма толтурууда ката чыкты. Сураныч, кайра аракет кылыңыз </p>-->
                     
                     <div class="col-sm-3">
-                    <p style="font-size: 18px;">Үн тандаңыз: </p>
+                    <p style="font-size: 22px;">Үн тандаңыз: </p>
                     <div class="radio-container">
                         <label class="radio">
                           <input type="radio"  id="man" value="man" name="choose">
                           <span>Нурбек</span>
                         </label>
-                        <label class="radio">
+                        <label class="radio" style="margin-left: 50px;">
                           <input type="radio" checked="checked" name="choose" id="woman" value="woman" required>
                           <span>Нурай</span>
                         </label>
                       </div>
                       <br><br>
-                        <button style="margin-left: 0" type="submit" class="btn btn-primary " id="submitBtn">Жөнөтүү</button>
-                        <div class="spinner-block hidden" id="loading2">
+                        <button style="margin-left: 0" type="submit" class="btn btn-primary " id="submitBtn">Текст жөнөтүү</button>
+                        <div style="margin: 0; " class="spinner-block hidden" id="loading2">
                           <div class="spinner spinner-1"></div>
                         
                         </div>
                         <br><br>
-                        <p id="audio_info" style="font-size: 18px; display: none;  ">Аудиофайл:</p>
+                        
                             <div id="audio_speed" class="hidden">
                             <input type="range" class="form-range" id="speedRange" min="0.1"
                                   max="2.0" step="0.1" value="1.0" list="markers" style="width: 250px;">
@@ -65,6 +65,7 @@
                             </datalist>
                           <p>Ылдамдык: <output id="speed_value"></output>x</p>
                           </div>
+                          <p id="audio_info" style="font-size: 18px; display: none;  ">Аудиофайл:</p>
                             <audio controls id="audioPlayer" style="display: none; width: 380px;">
                             <source src="" type="audio/wav">
                             Браузериңиз аудио элементти колдобойт.
@@ -84,6 +85,18 @@
 
 
 <script>
+  
+    const player = new Plyr('#audioPlayer', {
+      controls: ['play', 'progress', 'current-time', 'mute', 'settings', 'fullscreen'],
+      speed: {
+        selected: 1,
+        options: [0.5, 1, 1.5, 2] // Change the speed options as needed
+      }
+      // Add other options as needed
+    });
+    player.elements.container.style.display = 'none';
+  
+  
 function countCharacters() {
         var textarea = document.querySelector('textarea[name="text"]');
         var charCount = document.getElementById("charCount");
@@ -112,6 +125,8 @@ function countCharacters() {
   const audioElement = document.getElementById("audioPlayer");
   const audio_info = document.getElementById("audio_info");
   const is_not_valid_info2 = document.getElementById("is_not_valid_info2");
+  const plyrAudioContainer = document.querySelector('.plyr--audio');
+    plyrAudioContainer.style.display = 'none';
 	//const captcha_error_info = document.getElementById("captcha_error");
 	//const other_error_info = document.getElementById("other_error");
 	value.textContent = input.value;
@@ -152,12 +167,16 @@ function countCharacters() {
               //other_error_info.style.display = "block";
               is_not_valid_info2.style.display = "none";
               audioElement.style.display = "none";
+              plyrAudioContainer.style.display = 'none';
+              player.elements.container.style.display = 'none';
               //captcha_error_info.style.display = "none";
               //grecaptcha.reset();
           }
           else if (is_not_valid){
               is_not_valid_info2.style.display = "block";
               audioElement.style.display = "none";
+              plyrAudioContainer.style.display = 'none';
+              player.elements.container.style.display = 'none';
               //other_error_info.style.display = "none";
               //captcha_error_info.style.display = "none";
               //grecaptcha.reset();
@@ -170,6 +189,8 @@ function countCharacters() {
           //captcha_error_info.style.display = "block";
           	is_not_valid_info2.style.display = "none";
               audioElement.style.display = "none";
+              plyrAudioContainer.style.display = 'none';
+              player.elements.container.style.display = 'none';
               audio_info.style.display = "none";
           text.style.display = "none";
           }
@@ -184,6 +205,8 @@ function countCharacters() {
           audio_info.style.display = "block";
           audio_speed.style.display = "block";
           audioElement.style.display = "block";
+          plyrAudioContainer.style.display = 'block';
+              player.elements.container.style.display = 'block';
           if (is_man){
           	audioElement.playbackRate = 1.1;
           }

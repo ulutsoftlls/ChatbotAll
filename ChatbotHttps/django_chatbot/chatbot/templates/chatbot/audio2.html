@@ -9,16 +9,17 @@
 <section id="hero" class="d-flex align-items-center">
     <div class="container">
         <div class="row">
-            <div class="row">
+            <div class="row" style="margin-left: 50px;">
             <div class="col-sm-5">
 
                     <br>
                     <div id="Recording" class="button rec-effect-1">
-                        <i class="fa fa-microphone fa-2x"></i>
+                        <i class="fa fa-microphone fa-3x"></i>
 
                     </div>
-                    <span id="timer" style="font-size: 20px; top:8px; position: relative;padding-left: 15px;">00:00</span>
-                    <p style="font-size: 14px; margin: 0;padding-top: 10px">Эскертүү: </p>
+                    <span id="timer" style="font-size: 25px; top:8px; position: relative;padding-left: 20px;">00:00</span>
+                    <br><br><br>
+                    <p style="font-size: 14px; margin: 0;padding-top: 10px;padding-bottom: 10px">Эскертүү: </p>
                     <p style="font-size: 14px;">Үн жаздыруунун мөөнөтү 1 мүнөттөн ашпоого тийиш</p>
 
             </div>
@@ -36,19 +37,28 @@
             </div>
             </div>
 
-            <div class="row">
+            <div class="row" style="margin-left: 50px;">
             	
-                </div>
+                
                 <p id="audio_text" style="font-size: 18px; display: none; margin-top: 5px">Текст:</p>
-            <div class="col-sm-12" style="margin-top: 5px; font-size: 4rem">
+            <div class="col-sm-12" style="margin-top: 5px; font-size: 2rem">
                 <p> <span id="myText"> </span></p>
                 </div>
-
+            </div>
 
         </div>
             </div>
 </section>
 <script>
+    const player = new Plyr('#audioPlayer', {
+      controls: ['play', 'progress', 'current-time', 'mute', 'settings', 'fullscreen'],
+      speed: {
+        selected: 1,
+        options: [0.5, 1, 1.5, 2] // Change the speed options as needed
+      }
+      // Add other options as needed
+    });
+    player.elements.container.style.display = 'none';
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     let audioChunks = [];
     let mediaRecorder;
@@ -63,6 +73,8 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     const audio_text = document.getElementById("audio_text");
     const my_text = document.getElementById("myText");
     const timer = document.getElementById("timer"); // reference to the timer element
+    const plyrAudioContainer = document.querySelector('.plyr--audio');
+    plyrAudioContainer.style.display = 'none';
 
     recordingButton.addEventListener('click', () => {
         if (mediaRecorder && mediaRecorder.state === 'recording') {
@@ -91,6 +103,8 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                     my_text.style.display = "none";
                     loading2.style.display = "block";
                     audioPlayer.style.display = "none";
+                    plyrAudioContainer.style.display = 'none';
+                    player.elements.container.style.display = 'none';
                     audio_info.style.display = "none";
           		audio_text.style.display = "none";
                     const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
@@ -112,6 +126,8 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                             audioPlayer.style.display = "block";
                             audio_info.style.display = "block";
                             audio_text.style.display = "block";
+                            plyrAudioContainer.style.display = 'block';
+                            player.elements.container.style.display = 'block';
                             var text = data.text;
                             document.getElementById("myText").innerHTML = text;
                             my_text.style.display = "block";

@@ -390,8 +390,22 @@ def get_data_from_tts(request, gender, text, audio_url):
         shutil.move(old_path, new_path)
         request.session[audio_url] = file_name
     else:
-        print('error')
-        return JsonResponse({"error": "Failed to send/receive data"}, status=500)
+        print('error in tts')
+        data_to_send = {"speaker_id": gender, "text": 'ката чыкты'}  # Replace with your data
+        response = requests.post(api_url, json=data_to_send)
+        if response.status_code == 200:
+            received_data = response.json()
+            # print(received_data)
+            # Process the received data as needed
+            print(received_data['result'])
+            old_path = str(received_data['result'])
+            file_name = str(received_data['result'])[46:]
+            print(file_name)
+            new_path = '/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/' + str(
+                file_name)
+
+            shutil.move(old_path, new_path)
+            request.session[audio_url] = file_name
     return request.session[audio_url]
 
 
@@ -440,9 +454,9 @@ def speech(request):
         # res = search_from_claudia(request.session['text_record'])
         # print(f'Answer from Claudia: {res}')
 
-        # res = search_on_mistal(request.session['text_record'])
-        # print(f'Answer from Mistral: {res}')
-        res = request.session['text_record']
+        res = search_on_mistal(request.session['text_record'])
+        print(f'Answer from Mistral: {res}')
+        #res = request.session['text_record']
 
         # res_inter = search_on_internet(request.session['text_record'])
         # print(f'Answer from Internet: {res_inter}')

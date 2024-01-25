@@ -18,7 +18,7 @@ margin-left: auto;
 margin-right: auto;
 }
 #submitBtn {
-  background-color: #202060;
+  background-color: #1a75ff;
   font-weight: 500;
   color: #fff;
   padding: 10px 20px;
@@ -30,7 +30,7 @@ margin-right: auto;
 }
 
 #submitBtn:hover {
-  background-color: #19194d;
+  background-color: #0052cc;
   transform: translateY(-2px); /* Add a slight upward shift on hover for 3D effect */
   box-shadow: 0 10px 12px rgba(0, 0, 0, 0.3); /* Increase the box shadow on hover */
 }
@@ -38,7 +38,7 @@ margin-right: auto;
 
 .button {
 position:relative;
-width:80px;	height:80px;
+width:100px;	height:100px;
 color:#fff;
 background:#000;
 font-size:1.1em;
@@ -46,29 +46,42 @@ line-height:37px;
 text-align:center;
 border-radius:50% 50%;
 padding-top: 20px;
+cursor: pointer;
 /* 	border:1px solid #fff; */
 }
+
 .button:hover {
-  box-shadow: 0 0 0 11px rgb(0, 191, 255),
-              0 0 0 0 rgb(0, 191, 255),
-              0 0 0 0 rgb(0, 191, 255);
+  box-shadow: 0 0 0 11px rgb(26, 117, 255),
+              0 0 0 0 rgb(26, 117, 255),
+              0 0 0 0 rgb(26, 117, 255);
 }
 
 .rec-effect-1 {
 transition: box-shadow 0.33s ease-in-out;
+}
+.rec-effect-1.active i::before {
+  content: '\f04d'; /* Unicode for pause icon, you may need to adjust this based on your icon font */
+  width: 80px; 
+    height: 80px;
+    font-size: 60px;
 }
 .rec-effect-1.active {
   animation: rec-effect-1 1s infinite alternate ease-in-out;
 }
 @keyframes rec-effect-1 {
 0% {
-  box-shadow: 0 0 0 0 rgb(255, 0, 0),
-              111px 0 0 -33px rgb(255, 0, 0),
-              -111px 0 0 -33px rgb(255, 0, 0);
+  box-shadow: 
+              0 0 0 0 rgb(255, 0, 0),
+              100px 0 0 -20px rgb(255, 0, 0),
+              -100px 0 0 -20px rgb(255, 0, 0),
+              150px 0 0 -33px rgb(255, 0, 0),
+              -150px 0 0 -33px rgb(255, 0, 0);
 }
 
 100% {
-  box-shadow: 0 0 0 11px rgb(255, 0, 0),
+  box-shadow: 0 0 0 15px rgb(255, 0, 0),
+              0 0 0 0 rgb(255, 0, 0),
+              0 0 0 0 rgb(255, 0, 0),
               0 0 0 0 rgb(255, 0, 0),
               0 0 0 0 rgb(255, 0, 0);
 }
@@ -89,10 +102,10 @@ position: absolute;
 left: -9999px;
 }
 label input:checked + span {
-background-color: #d6d6e5;
+background-color: #b3d1ff;
 }
 label input:checked + span:before {
-box-shadow: inset 0 0 0 0.4375em #00005c;
+box-shadow: inset 0 0 0 0.4375em #1a75ff;
 }
 label span {
 display: flex;
@@ -102,7 +115,7 @@ border-radius: 99em;
 transition: 0.25s ease;
 }
 label span:hover {
-background-color: #d6d6e5;
+background-color: #b3d1ff;
 }
 label span:before {
 display: flex;
@@ -114,7 +127,7 @@ height: 1.5em;
 border-radius: 50%;
 margin-right: 0.375em;
 transition: 0.25s ease;
-box-shadow: inset 0 0 0 0.125em #00005c;
+box-shadow: inset 0 0 0 0.125em #1a75ff;
 }
 
 btnRecord:hover{
@@ -190,6 +203,16 @@ display: none;
 .plyr {
 width: 400px;
 
+}
+.plyr__controls button {
+  color: #1a75ff !important;  
+}
+.plyr__controls button:hover {
+  background-color: #1a75ff !important;
+  color: #fff !important;   
+}
+:root {
+  --plyr-range-fill-background: #1a75ff; 
 }
 .messages-box {
   background: #f2f2f2;
@@ -273,6 +296,7 @@ Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color
     height: 50px;
   border-radius: 15px;
     border-color: black;
+    border-width: 2px;
     margin-right: 5px;
 }
 .message-input:focus {
@@ -518,7 +542,6 @@ float: left;
 
 /* COMMON STYLES: YOU DON'T NEED THEM */
 .container .spinners {
-margin-top: 50px;
 display: flex;
 justify-content: flex-start;
 flex-wrap: wrap;
@@ -535,7 +558,6 @@ margin-right: 0px;
 font-family: "Pacifico", cursive;
 font-size: 17px;
 color: #212121;
-margin-bottom: 20px;
 }
 
 /* YOU NEED THESE STYLES */
