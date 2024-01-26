@@ -48,16 +48,4 @@ class TextForm(forms.ModelForm):
         super(TextForm, self).__init__(*args, **kwargs)
         self.fields['text'].label = ""
 
-    # def clean(self):
-    #     cleaned_data = super().clean()
-    #     if not cleaned_data.get('text'):
-    #         raise forms.ValidationError('Please enter text ')
-
-# class DocumentForm(forms.ModelForm):
-#     captcha2 = ReCaptchaField(label='')
-#     class Meta:
-#         model = Audios
-#         fields = ['audio_file']
-#     def __init__(self, *args, **kwargs):
-#         super(DocumentForm, self).__init__(*args, **kwargs)
-#         self.fields['audio_file'].label = ""
+   

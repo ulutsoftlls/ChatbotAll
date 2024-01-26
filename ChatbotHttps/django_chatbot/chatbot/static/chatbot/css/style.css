@@ -224,6 +224,7 @@ width: 400px;
 }
 
 .messages-list {
+  /*510*/
 height: 510px;
 margin-top: 80px;
     overflow-y: auto;
@@ -341,20 +342,21 @@ display: flex;
   position: absolute;
   flex: 1;
     top: 89%;
-    bottom: 5%;
+    bottom: 6%;
     width: 15%;
   left: 75%;
   right: 0;
-  padding: 10px;
+  padding-bottom: 8px;
+  padding-top: 12px;
 
 
 
 }
 #new_chat{
 
-height: 55px;
+height: 53px;
 width: 120px;
-border-radius: 15%;
+border-radius: 18px;
 transition: all 0.2s linear;
 }
 .button-up,
@@ -370,7 +372,7 @@ transition: all 0.2s linear;
 }
 
 .button-down:hover {
-transform: translate3d(0, 10px, 0);
+transform: translate3d(0, 20px, 0);
 }
 
 .button-up:hover {
@@ -386,8 +388,11 @@ z-index: 11;
 display: block;
 width: 25px;
 height: 25px;
-border-top: 2px solid #fff;
-border-left: 2px solid #fff;
+border-top: 3px solid #f2f2f2;
+border-left: 3px solid #f2f2f2;
+}
+.button-down:hover::after {
+  left: 25%; 
 }
 .button-up::after {
 top: 36px;

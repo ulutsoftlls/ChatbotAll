@@ -1,13 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
-#import openai
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from django.contrib import auth
 from django.contrib.auth.models import User
 from .models import Chat
 import time, requests
 from django.contrib.auth import authenticate
-
 from django.utils import timezone
 import shutil
 from pydub import AudioSegment
@@ -16,23 +14,19 @@ from bs4 import BeautifulSoup
 import datetime
 import random
 import re
-from django_chatbot import settings
-from django_chatbot.settings import MEDIA_URL
+from django_chatbot.settings import MEDIA_URL, MEDIA_ROOT
 import secrets
 import string
 import pytz
 from django.contrib import messages
 from datetime import datetime, timedelta
 from constance import config
-#from claudia import search_from_claudia
 from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
 from chatbot.forms import *
-#from chatbot.speech2text import WhisperModel
 import pytz
 import os
 
 
-#whisper_model = WhisperModel()
 anthropic = Anthropic(api_key='')
 navbar = [
           # {'title': 'Кирүү', 'url': 'login'},
@@ -45,6 +39,7 @@ text_error = '<ul class="errorlist"><li>text<ul class="errorlist"><li>Кайра
 captcha_error = '<ul class="errorlist"><li>captcha<ul class="errorlist"><li>Это поле обязательно для заполнения.</li></ul></li></ul>'
 
 def home(request):
+    print(MEDIA_ROOT)
     title = 'Башкы бет'
 
     context = {
@@ -54,18 +49,45 @@ def home(request):
     return render(request, 'chatbot/index.html', context=context)
 
 def get_data_from_whisper(requests, url):
-    api_url = 'http://127.0.0.1:7000/api/receive_data'  # Replace with your Flask API's URL
+    api_url = 'http://127.0.0.1:7000/api/receive_data'  
     data_to_send = {
-        "audio_url": url}  # Replace with your data
+        "audio_url": url}  
     response = requests.post(api_url, json=data_to_send)
     if response.status_code == 200:
         received_data = response.json()
         text = str(received_data['text'])
-        # print(request.session['text_record'])
     else:
         print('error in whisper')
         return JsonResponse({"error": "Failed to send/receive data"}, status=500)
     return text
+
+def get_data_from_tts(request, gender, text, audio_url):
+    api_url = 'http://0.0.0.0:8089/api/tts' 
+    data_to_send = {"speaker_id": gender, "text": text}  
+    response = requests.post(api_url, json=data_to_send)
+    if response.status_code == 200:
+        received_data = response.json()
+        old_path = str(received_data['result'])
+        file_name = str(received_data['result'])[46:]#strip old path
+        print(file_name)
+        new_path = MEDIA_ROOT + str(file_name)
+        shutil.move(old_path, new_path)
+        request.session[audio_url] = file_name
+    else:
+        print('error in tts')
+        text = 'ката чыкты' # if smth error
+        data_to_send = {"speaker_id": gender, "text": text}
+        response = requests.post(api_url, json=data_to_send)
+        if response.status_code == 200:
+            received_data = response.json()
+            print(received_data['result'])
+            old_path = str(received_data['result'])
+            file_name = str(received_data['result'])[46:]
+            print(file_name)
+            new_path = MEDIA_ROOT + str(file_name)
+            shutil.move(old_path, new_path)
+            request.session[audio_url] = file_name
+    return request.session[audio_url]
 
 @csrf_protect
 @csrf_exempt
@@ -86,14 +108,10 @@ def text_to_speech(request):
                 response = requests.post(api_url, json=data_to_send)
                 if response.status_code == 200:
                     received_data = response.json()
-                    # print(received_data)
-                    # Process the received data as needed
                     print(received_data['result'])
                     old_path = str(received_data['result'])
                     file_name = str(received_data['result'])[46:]
-                    print(file_name)
-                    new_path = '/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/' + str(
-                        file_name)
+                    new_path = MEDIA_ROOT + str(file_name)
                     shutil.move(old_path, new_path)
                     request.session['audio_url'] = file_name
                     #Audios.objects.create(text=request.session['text'], audio_file=request.session['audio_url'])
@@ -113,12 +131,9 @@ def text_to_speech(request):
                 response = requests.post(api_url, json=data_to_send)
                 if response.status_code == 200:
                     received_data = response.json()
-                    # print(received_data)
-                    # Process the received data as needed
                     old_path = str(received_data['result'])
                     file_name = str(received_data['result'])[46:]
-                    new_path = '/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/' + str(
-                        file_name)
+                    new_path = MEDIA_ROOT + str(file_name)
                     shutil.move(old_path, new_path)
                     request.session['audio_url'] = file_name
                     #Audios.objects.create(text=request.session['text'], audio_file=request.session['audio_url'])
@@ -159,36 +174,22 @@ def speech_to_text(request):
     context = {}
     if request.method == 'POST' and request.FILES.get('audio'):
         audio_file = request.FILES['audio']
-        upload_dir = ''
         N = 4
-
         res1 = ''.join(secrets.choice(string.ascii_lowercase + string.digits)
                        for i in range(N))
         res2 = ''.join(secrets.choice(string.ascii_lowercase + string.digits)
                        for i in range(N))
         audio_file_name = str(audio_file)[:-4] + '_' + str(res1) + '_' + str(res2) + '.wav'
-        file_path = os.path.join(settings.MEDIA_ROOT, upload_dir, audio_file_name)
-
-        # with open(file_path, 'wb') as destination:
-        #    for chunk in audio_file.chunks():
-        #        destination.write(chunk)
+        file_path = os.path.join(MEDIA_ROOT, audio_file_name)
 
         request.session['audio_url_record'] = audio_file_name
         sound = AudioSegment.from_file(audio_file)
         sound = sound.set_frame_rate(16000)
-        sound.export(settings.MEDIA_ROOT + str(request.session['audio_url_record'][:-4]) + '_new.wav', format="wav")
+        sound.export(MEDIA_ROOT + str(request.session['audio_url_record'][:-4]) + '_new.wav', format="wav")
         request.session['audio_url_record'] = str(request.session['audio_url_record'][:-4]) + '_new.wav'
-        # print(request.session['audio_url_record'])
-        # print(settings.MEDIA_ROOT + request.session['audio_url_record'])
-        # st = time.time()
-
-        # request.session['text_record'] = whisper_model.generate_text_from_audio(settings.MEDIA_ROOT+request.session['audio_url_record'])
-        request.session['text_record'] = get_data_from_whisper(requests,
-            settings.MEDIA_ROOT + request.session['audio_url_record'])
-
-
-
         
+        request.session['text_record'] = get_data_from_whisper(requests,MEDIA_ROOT + request.session['audio_url_record'])
+
         print(request.session['text_record'])
         #Audios.objects.create(audio_file=request.session['audio_url_record'], text=request.session['text_record'])
         request.session['audio_url_record'] = MEDIA_URL + request.session['audio_url_record']
@@ -221,7 +222,6 @@ def speech_to_text(request):
         }
         return render(request, "chatbot/audio2.html", context=context)
 def search_from_claudia(text):
-
     text = '\n\nHuman: ' + 'кыргызча жооп бер ' + '\n\nAssistant: Макул кыргызча жооп берем\n\nHuman:' + text
     stream = anthropic.completions.create(
         model="claude-2",
@@ -236,16 +236,19 @@ def search_from_claudia(text):
         print(complation.completion, end='', flush=True)
     print(res)
     return res
+
+
 def translate_text(text, target_language='ky'):
     translator = Translator()
     translation = translator.translate(text, dest=target_language)
     return translation.text
+
+
 def search_on_mistal(text):
-    #print(1221)
-    #api_url = 'http://80.72.180.130:3050/api/receive_data'  # Replace with your Flask API's URL
-    #text = 'Ты кто такой?'
+    #api_url = 'http://80.72.180.130:3050/api/receive_data'  
     # if not text[-1] == '?':
     #     text = text + '?'
+
     response = requests.get(f"https://80.72.180.130:7000/process_text/{text}", stream=True, verify=False)
 
 
@@ -253,7 +256,6 @@ def search_on_mistal(text):
     # data_to_send = {
     #     "in_text": text}  # Replace with your data
     # response = requests.post(api_url, json=data_to_send)
-
 
     if response.status_code == 200:
         content = b""
@@ -269,7 +271,7 @@ def search_on_mistal(text):
         new_out = out.replace('<s>', '')
         new_out = new_out.replace('[/KYR] ', '')
         new_out = new_out.replace('[KYR] ', '')
-        # new_out = new_out[l:]
+        new_out = new_out[l:]
         # new_out = re.split('(?<=[\.\?\!])\s*', new_out)
         # #print(new_out)
         # ans = ''
@@ -301,9 +303,7 @@ def search_on_internet(text):
     response = requests.post(api_url, json=search_payload, headers=api_headers)
     json_data = response.json()
 
-
-
-# Извлечение информации из объекта JSON
+    # Извлечение информации из объекта JSON
     search_parameters = json_data.get("searchParameters", {})
     organic_results = json_data.get("organic", [])
 
@@ -320,10 +320,7 @@ def search_on_internet(text):
                 # Отправка GET-запроса по полученному линку
                 response = requests.get(link)
                 page_content = response.text
-               # print(link)
-# Джала́л-Аба́д[3] (кирг. Жалал-Абад, Жалалабат, сокр. ДЖл) — третий по величине город в Киргизии, административный центр Джалал-Абадской области. Население — 129 400 человек[1]. Расположен на юге страны в Ферганской долине. Недалеко от города протекает река Кугарт, правый приток реки Кара-Дарья.
-
-
+                # print(link)
                 # Использование BeautifulSoup для анализа HTML страницы
                 soup = BeautifulSoup(page_content, 'html.parser')
                 paragraphs = [re.sub(r'<.*?>', '', paragraph.get_text()) for paragraph in soup.find_all('p')]
@@ -351,65 +348,6 @@ def search_on_internet(text):
     return "Мындай маалымат жок"
 
 
-
-
-    # api_key = 'AIzaSyAPEnSDbWyRbnajVbpithCsn4jkXNG6LF0'
-    # cx = '40239d5a01b394fe0'  # Replace with your actual Custom Search Engine ID
-    #
-    # url = f'https://www.googleapis.com/customsearch/v1?q={text}&key={api_key}&cx={cx}&hl=ky&num=1'
-    #
-    # try:
-    #
-    #     response = requests.get(url)
-    #     response.raise_for_status()
-    #     data = response.json()
-    #     print(data)
-    #     if 'items' in data and data['items']:
-    #         first_result = data['items'][0]
-    #         return [first_result]
-    #     else:
-    #         return "ката чыкты"
-    #
-    # except requests.exceptions.RequestException as e:
-    #     return f"Error during internet search: {str(e)}"
-def get_data_from_tts(request, gender, text, audio_url):
-    api_url = 'http://0.0.0.0:8089/api/tts'  # Replace with your Flask API's URL
-    data_to_send = {"speaker_id": gender, "text": text}  # Replace with your data
-    response = requests.post(api_url, json=data_to_send)
-    if response.status_code == 200:
-        received_data = response.json()
-        # print(received_data)
-        # Process the received data as needed
-        print(received_data['result'])
-        old_path = str(received_data['result'])
-        file_name = str(received_data['result'])[46:]
-        print(file_name)
-        new_path = '/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/' + str(
-            file_name)
-
-        shutil.move(old_path, new_path)
-        request.session[audio_url] = file_name
-    else:
-        print('error in tts')
-        data_to_send = {"speaker_id": gender, "text": 'ката чыкты'}  # Replace with your data
-        response = requests.post(api_url, json=data_to_send)
-        if response.status_code == 200:
-            received_data = response.json()
-            # print(received_data)
-            # Process the received data as needed
-            print(received_data['result'])
-            old_path = str(received_data['result'])
-            file_name = str(received_data['result'])[46:]
-            print(file_name)
-            new_path = '/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/' + str(
-                file_name)
-
-            shutil.move(old_path, new_path)
-            request.session[audio_url] = file_name
-    return request.session[audio_url]
-
-
-
 @csrf_protect
 @csrf_exempt
 def speech(request):
@@ -417,42 +355,28 @@ def speech(request):
     if request.method == 'POST':
 
         audio_file = request.FILES['audio2']
-        #upload_dir = 'recorded/'
         N = 4
         res1 = ''.join(secrets.choice(string.ascii_lowercase + string.digits)
                        for i in range(N))
         res2 = ''.join(secrets.choice(string.ascii_lowercase + string.digits)
                        for i in range(N))
         audio_file_name = str(audio_file)[:-4] + '_' + str(res1) + '_' + str(res2) + '.wav'
-        #file_path = os.path.join(settings.MEDIA_ROOT, upload_dir, audio_file_name)
-        # with open(file_path, 'wb') as destination:
-        #    for chunk in audio_file.chunks():
-        #        destination.write(chunk)
+
         print(audio_file_name)
         request.session['audio_url_record'] = audio_file_name
         sound = AudioSegment.from_file(audio_file)
         sound = sound.set_frame_rate(16000)
-        sound.export(settings.MEDIA_ROOT + str(request.session['audio_url_record'][:-4]) + '_new.wav', format="wav")
+        sound.export(MEDIA_ROOT + str(request.session['audio_url_record'][:-4]) + '_new.wav', format="wav")
         request.session['audio_url_record'] = str(request.session['audio_url_record'][:-4]) + '_new.wav'
-        # print(request.session['audio_url_record'])
-        # print(settings.MEDIA_ROOT + request.session['audio_url_record'])
-        # st = time.time()
-
-        # request.session['text_record'] = whisper_model.generate_text_from_audio(settings.MEDIA_ROOT+request.session['audio_url_record'])
+        
         request.session['text_record'] = get_data_from_whisper(requests,
-            settings.MEDIA_ROOT + request.session['audio_url_record'])
-
-        # et = time.time()
-        # elapsed_time = et - st
-        # print('Execution time:', elapsed_time, 'seconds')
+            MEDIA_ROOT + request.session['audio_url_record'])
 
         #Audios.objects.create(audio_file=request.session['audio_url_record'], text=request.session['text_record'])
 
         request.session['audio_url_record'] = MEDIA_URL + request.session['audio_url_record']
 
         print(f'Input: {request.session["text_record"]}')
-        # res = search_from_claudia(request.session['text_record'])
-        # print(f'Answer from Claudia: {res}')
 
         res = search_on_mistal(request.session['text_record'])
         print(f'Answer from Mistral: {res}')
@@ -495,8 +419,6 @@ def speech(request):
                              }
             return JsonResponse(response_data)
 
-        # request.session['audio_save'] = True
-
     else:
 
         context = {
@@ -504,11 +426,12 @@ def speech(request):
             'navbar': navbar
         }
         return render(request, "chatbot/audio4.html", context=context)
-# Create your views here.
+
+
 @csrf_protect
 @csrf_exempt
 def chatbot(request):
-    #
+    
     current_time = datetime.now(pytz.timezone('Etc/GMT-6'))
     #print(f'log time : {datetime.fromisoformat(request.session["login_time"])}')
     #one_day_later = datetime.fromisoformat(request.session['login_time']) + timedelta(minutes=60)
@@ -532,8 +455,7 @@ def chatbot(request):
 
     if request.method == 'POST':
         request.session['message'] = request.POST['message']
-        my_setting_value = config.Model
-        print(my_setting_value)
+        my_setting_value = config.Model #default Mistral
         #print(my_setting_value)
         #response = ask_openai(message)
         #messages.success(request, 'Your message was successfully processed.')
@@ -553,8 +475,10 @@ def chatbot(request):
             # chat = Chat(user=request.user, message=request.session['message'], response=response)
             # chat.save()
             if request.session['message'][-1] == '?':
+                #QA Mistral
                 return JsonResponse({'message': request.session['message'], 'response': 'response', 'model': 'Mistral2', 'time': current_time})
             else:
+                #Text completion Mistral
                 return JsonResponse({'message': request.session['message'], 'response': 'response', 'model': 'Mistral', 'time': current_time})
         elif my_setting_value == 'Claudia':
             #com = search_from_claudia(request.POST['message'])
@@ -573,24 +497,15 @@ def chatbot(request):
                     {'message': request.session['message'], 'response': 'response', 'model': 'Claudia', 'time': current_time})
             else:
                 #Mistral
-                response = search_on_mistal(request.session['message'])
                 #response = 'Hi'
                 current_time = datetime.now(pytz.timezone('Etc/GMT-6'))
                 current_time = str(current_time)[:-13]
-                chat = Chat(user=request.user, message=request.session['message'], response=response)
-                chat.save()
-                return JsonResponse(
-                    {'message': request.session['message'], 'response': response, 'model': 'Mistral',
-                     'time': current_time})
+                if request.session['message'][-1] == '?':
+                    return JsonResponse({'message': request.session['message'], 'response': 'response', 'model': 'Mistral2', 'time': current_time})
+                else:
+                    return JsonResponse({'message': request.session['message'], 'response': 'response', 'model': 'Mistral', 'time': current_time})
 
-        #print(f'Answer from Mistral: {response}')
-        # print(f'Answer from Mistral: {res_mistral}')
-        # response = search_on_internet(request.session['message'])
-        # print(response)
-        #response = translate_text(response)
-
-
-        #return JsonResponse({'message': request.session['message'], 'response': response, 'time': current_time})
+        
     context = {
         'title': 'Тексттен текстке',
         'navbar': navbar,

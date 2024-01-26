@@ -10,77 +10,70 @@
     <div class="container">
         <div class="row">
             <div class="row" style="margin-left: 50px;">
-            <div class="col-sm-4">
+                <div class="col-sm-4">
 
                     <br>
-                <div id="Recording" class="button rec-effect-1">
+                    <div id="Recording" class="button rec-effect-1">
                         <i class="fa fa-microphone fa-3x"></i>
-
                     </div>
 
-                <span id="timer" style="font-size: 25px;top:8px; position: relative; padding-left: 20px;">00:00</span>
-                <br><br><br>
-                <p style="font-size: 14px; margin: 0;padding-top: 10px;padding-bottom: 10px">Эскертүү: </p>
-                <p style="font-size: 14px;">Үн жаздыруунун мөөнөтү 1 мүнөттөн ашпоого тийиш</p>
-                <p style="font-size: 22px;">Үн тандаңыз: </p>
-                <div class="radio-container">
-                <label class="radio">
-                    <input type="radio" id="man" value="man" name="choose">
-                    <span>Нурбек</span>
-                </label>
-                <label class="radio" style="margin-left: 40px;">
-                    <input type="radio" checked="checked" name="choose" id="woman" value="woman" required>
-                    <span>Нурай</span>
-                </label>
-            </div>
+                    <span id="timer" style="font-size: 25px;top:8px; position: relative; padding-left: 20px;">00:00</span>
+                    <br><br><br>
+                    <p style="font-size: 14px; margin: 0;padding-top: 10px;padding-bottom: 10px">Эскертүү: </p>
+                    <p style="font-size: 14px;">Үн жаздыруунун мөөнөтү 1 мүнөттөн ашпоого тийиш</p>
+                    <p style="font-size: 22px;">Үн тандаңыз: </p>
+                    <div class="radio-container">
+                        <label class="radio">
+                            <input type="radio" id="man" value="man" name="choose">
+                            <span>Нурбек</span>
+                        </label>
+                        <label class="radio" style="margin-left: 40px;">
+                            <input type="radio" checked="checked" name="choose" id="woman" value="woman" required>
+                            <span>Нурай</span>
+                        </label>
+                    </div>
 
-            </div>
+                </div>
             
                 
                 <div class="col-sm-4" style="margin-top: 20px;">
                     <div class="spinner-block hidden" id="loading2">
                         <div class="spinner spinner-1"></div>
-                      </div>
-            	<p id="audio_info" style="font-size: 18px; display: none;  ">Жаздырылган аудио:</p>
-                <audio controls id="audioPlayer1" class="hidden" style="width: 400px; margin-top: 5px">
-                <source src="" type="audio/wav">
-                Браузериңиз аудио элементти колдобойт
-                </audio>
+                    </div>
+                    <p id="audio_info" style="font-size: 18px; display: none;  ">Жаздырылган аудио:</p>
+                    <audio controls id="audioPlayer1" class="hidden" style="width: 400px; margin-top: 5px">
+                        <source src="" type="audio/wav">
+                        Браузериңиз аудио элементти колдобойт
+                    </audio>
                 </div>
                 
                 <div class="col-sm-4" style="margin-top: 20px;">
-                <p id="audio_info2" style="font-size: 18px; display: none;">Жооп:</p>
-                <audio controls id="audioPlayer2" class="hidden" style="width: 400px; margin-top: 5px">
-                <source src="" type="audio/wav">
-                Браузериңиз аудио элементти колдобойт
-                </audio>
+                    <p id="audio_info2" style="font-size: 18px; display: none;">Жооп:</p>
+                    <audio controls id="audioPlayer2" class="hidden" style="width: 400px; margin-top: 5px">
+                        <source src="" type="audio/wav">
+                        Браузериңиз аудио элементти колдобойт
+                    </audio>
                 </div>
             </div>
-
-
-            
-            
-                </div>
-                
-
-
         </div>
-            </div>
+ 
+    </div>
+    
 </section>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-     const players = Array.from(document.querySelectorAll('audio')).map(player => {
+    const players = Array.from(document.querySelectorAll('audio')).map(player => {
             return new Plyr(player, {
                 controls: ['play', 'progress', 'current-time', 'mute', 'settings', 'speed'],
-          speed: {
-        selected: 1, // Выбранная скорость по умолчанию (1x)
-        options: [0.5, 1, 1.5, 2] // Варианты доступных скоростей
-      }
+                speed: {
+                selected: 1, // Выбранная скорость по умолчанию (1x)
+                options: [0.5, 1, 1.5, 2] // Варианты доступных скоростей
+                }
             });
         });
-     players.forEach(player => {
+        players.forEach(player => {
                 player.elements.container.style.display = 'none';
-            });
+        });
 
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     let audioChunks = [];
@@ -97,11 +90,11 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     const audio_info2 = document.getElementById("audio_info2");
     const timer = document.getElementById("timer"); // reference to the timer element
     const man = document.getElementById("man");
-const woman = document.getElementById("woman");
+    const woman = document.getElementById("woman");
     const plyrAudioContainer = document.querySelector('.plyr--audio');
     plyrAudioContainer.style.display = 'none';
 
-let choose = 'woman';
+    let choose = 'woman';
     man.addEventListener("change", updateResult);
     woman.addEventListener("change", updateResult)
     function updateResult() {
@@ -150,7 +143,7 @@ let choose = 'woman';
                     const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
                     const formData = new FormData();
                     formData.append('audio2', audioBlob, 'audio.wav');
-		    formData.append('choose', choose);
+		            formData.append('choose', choose);
                     // Send audio to Django view using Fetch API
                     fetch('/speech/', {
                         method: 'POST',
@@ -175,7 +168,7 @@ let choose = 'woman';
 		        	player.elements.container.style.display = 'block';
 		    		});
 
-			audio_info.style.display = "block";
+			        audio_info.style.display = "block";
                     audio_info2.style.display = "block";
                     
                         }

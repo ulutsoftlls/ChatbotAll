@@ -10,44 +10,40 @@
     <div class="container">
         <div class="row">
             <div class="row" style="margin-left: 50px;">
-            <div class="col-sm-5">
-
+                <div class="col-sm-5">
                     <br>
                     <div id="Recording" class="button rec-effect-1">
                         <i class="fa fa-microphone fa-3x"></i>
-
                     </div>
                     <span id="timer" style="font-size: 25px; top:8px; position: relative;padding-left: 20px;">00:00</span>
                     <br><br><br>
                     <p style="font-size: 14px; margin: 0;padding-top: 10px;padding-bottom: 10px">Эскертүү: </p>
                     <p style="font-size: 14px;">Үн жаздыруунун мөөнөтү 1 мүнөттөн ашпоого тийиш</p>
 
-            </div>
-            <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
                     <p id="audio_info" style="font-size: 18px; display: none;  ">Аудиофайл:</p>
                     <audio controls id="audioPlayer" class="hidden" style="width: 400px; margin-top: 5px">
-                    <source src="" type="audio/wav">
-                    Браузериңиз аудио элементти колдобойт
+                        <source src="" type="audio/wav">
+                        Браузериңиз аудио элементти колдобойт
                     </audio>
-                <div class="col-sm-6" style="margin-top: 20px; width: 250px">
-                    <div class="spinner-block hidden" id="loading2">
-                    <div class="spinner spinner-1"></div>
+                    <div class="col-sm-6" style="margin-top: 20px; width: 250px">
+                        <div class="spinner-block hidden" id="loading2">
+                            <div class="spinner spinner-1"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
 
             <div class="row" style="margin-left: 50px;">
-            	
-                
                 <p id="audio_text" style="font-size: 18px; display: none; margin-top: 5px">Текст:</p>
-            <div class="col-sm-12" style="margin-top: 5px; font-size: 2rem">
-                <p> <span id="myText"> </span></p>
+                <div class="col-sm-12" style="margin-top: 5px; font-size: 2rem">
+                    <p> <span id="myText"> </span></p>
                 </div>
             </div>
 
         </div>
-            </div>
+    </div>
 </section>
 <script>
     const player = new Plyr('#audioPlayer', {
@@ -106,7 +102,7 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                     plyrAudioContainer.style.display = 'none';
                     player.elements.container.style.display = 'none';
                     audio_info.style.display = "none";
-          		audio_text.style.display = "none";
+          		    audio_text.style.display = "none";
                     const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
                     const formData = new FormData();
                     formData.append('audio', audioBlob, 'audio.wav');
