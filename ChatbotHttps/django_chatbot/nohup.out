@@ -1,0 +1,787 @@
+Watching for file changes with StatReloader
+Validating models...
+
+System check identified no issues (0 silenced).
+January 27, 2024 - 17:58:04
+Django version 4.1.7, using settings 'django_chatbot.settings'
+Starting development server at https://80.72.180.130:9000/
+Using SSL certificate: /etc/ssl/certs/django_site2.crt
+Using SSL key: /mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/django_site2.key
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+Validating models...
+
+System check identified no issues (0 silenced).
+January 27, 2024 - 17:58:21
+Django version 4.1.7, using settings 'django_chatbot.settings'
+Starting development server at https://80.72.180.130:9000/
+Using SSL certificate: /etc/ssl/certs/django_site2.crt
+Using SSL key: /mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/django_site2.key
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+Validating models...
+
+System check identified no issues (0 silenced).
+January 31, 2024 - 12:48:02
+Django version 4.1.7, using settings 'django_chatbot.settings'
+Starting development server at https://80.72.180.130:8085/
+Using SSL certificate: /etc/ssl/certs/django_site2.crt
+Using SSL key: /mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/django_site2.key
+Quit the server with CONTROL-C.
+[31/Jan/2024 12:48:05] "GET /text_to_speech/ HTTP/1.1" 200 13188
+[31/Jan/2024 12:48:06] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+[31/Jan/2024 12:49:19] "GET /text_to_speech/ HTTP/1.1" 200 13188
+[31/Jan/2024 12:49:19] "GET /static/chatbot/css/style.css HTTP/1.1" 200 17592
+[31/Jan/2024 12:49:19] "GET /static/chatbot/img/til.png HTTP/1.1" 200 19191
+[31/Jan/2024 12:49:20] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+1-2-февралда Министрлер Кабинетинин башчысы Акылбек Жапаровдун Казакстан Республикасына иш сапары болот. 
+ 
+Үстүбүздөгү жылдын 1-2-февралында Алматы шаарында (Казакстан Республикасы) Министрлер Кабинетинин Төрагасы – Кыргыз Республикасынын Президентинин Аппаратынын Жетекчиси Акылбек Жапаровдун жумушчу сапары болот. 
+ 
+Сапардын алкагында министрлер кабинетинин башчысы Евразиялык өкмөттөр аралык кеңештин жыйынына жана «Digital Almaty 2024: Industry X» эл аралык санарип форумуна катышат. 
+ 
+ЕӨАКтин жыйынынын жүрүшүндө ЕАЭБге катышуучу тараптардын өкмөт башчылары соода-экономикалык кызматташуунун, ошондой эле техникалык жөнгө салуу, Биримдиктин интеграцияланган маалымат тутуму жана башка актуалдуу маселелердин кеңири чөйрөсүн карашат. 
+ 
+Кыргыз Республикасынын Министрлер Кабинетинин Төрагасы Акылбек Жапаров ЕАЭБ өлкөлөрүнүн өкмөт башчылары менен бирге жыл сайын өтүүчү «Digital Almaty» санарип форумунун пленардык жыйынына катышат. 
+ 
+Форумга белгилүү эл аралык жана коомдук ишмерлер, ири IT-компаниялардын жетекчилери жана бизнес өкүлдөрү катышаары күтүлүүдө. 
+Мындан тышкары, визиттин алкагында делегация башчыларынын, анын ичинде Кыргыз Республикасынын, Россия Федерациясынын Өкмөтүнүн Төрагасы Михаил Мишустин жана Казакстан Республикасынын Премьер-министринин Алихан Смаилов ортосунда бир катар эки тараптуу жолугушуулар өткөрүлөт. 
+ 
+Жолугушуулардын жүрүшүндө тараптар көп кырдуу кызматташуунун актуалдуу маселелерин талкуулашат жана бир катар маанилүү багыттар боюнча макулдашууларды ишке ашыруу боюнча мөөнөттөрүнө көз салышат.
+woman
+[31/Jan/2024 12:49:40] "POST /text_to_speech/ HTTP/1.1" 200 8172
+[31/Jan/2024 12:49:40] "GET /media/1706683780audio716551.mp3 HTTP/1.1" 200 371584
+1чи-2чи-февралда Министрлер Кабинетинин башчысы Акылбек Жапаровдун Казакстан Республикасына иш сапары болот. 
+ 
+Үстүбүздөгү жылдын 1-2-февралында Алматы шаарында (Казакстан Республикасы) Министрлер Кабинетинин Төрагасы – Кыргыз Республикасынын Президентинин Аппаратынын Жетекчиси Акылбек Жапаровдун жумушчу сапары болот. 
+ 
+Сапардын алкагында министрлер кабинетинин башчысы Евразиялык өкмөттөр аралык кеңештин жыйынына жана «Digital Almaty 2024: Industry X» эл аралык санарип форумуна катышат. 
+ 
+ЕӨАКтин жыйынынын жүрүшүндө ЕАЭБге катышуучу тараптардын өкмөт башчылары соода-экономикалык кызматташуунун, ошондой эле техникалык жөнгө салуу, Биримдиктин интеграцияланган маалымат тутуму жана башка актуалдуу маселелердин кеңири чөйрөсүн карашат. 
+ 
+Кыргыз Республикасынын Министрлер Кабинетинин Төрагасы Акылбек Жапаров ЕАЭБ өлкөлөрүнүн өкмөт башчылары менен бирге жыл сайын өтүүчү «Digital Almaty» санарип форумунун пленардык жыйынына катышат. 
+ 
+Форумга белгилүү эл аралык жана коомдук ишмерлер, ири IT-компаниялардын жетекчилери жана бизнес өкүлдөрү катышаары күтүлүүдө. 
+Мындан тышкары, визиттин алкагында делегация башчыларынын, анын ичинде Кыргыз Республикасынын, Россия Федерациясынын Өкмөтүнүн Төрагасы Михаил Мишустин жана Казакстан Республикасынын Премьер-министринин Алихан Смаилов ортосунда бир катар эки тараптуу жолугушуулар өткөрүлөт. 
+ 
+Жолугушуулардын жүрүшүндө тараптар көп кырдуу кызматташуунун актуалдуу маселелерин талкуулашат жана бир катар маанилүү багыттар боюнча макулдашууларды ишке ашыруу боюнча мөөнөттөрүнө көз салышат.
+woman
+[31/Jan/2024 12:49:56] "POST /text_to_speech/ HTTP/1.1" 200 8196
+[31/Jan/2024 12:49:56] "GET /media/1706683795audio351568.mp3 HTTP/1.1" 200 375136
+Биринчи экинчи февралда Министрлер Кабинетинин башчысы Акылбек Жапаровдун Казакстан Республикасына иш сапары болот. 
+ 
+Үстүбүздөгү жылдын 1-2-февралында Алматы шаарында (Казакстан Республикасы) Министрлер Кабинетинин Төрагасы – Кыргыз Республикасынын Президентинин Аппаратынын Жетекчиси Акылбек Жапаровдун жумушчу сапары болот. 
+ 
+Сапардын алкагында министрлер кабинетинин башчысы Евразиялык өкмөттөр аралык кеңештин жыйынына жана «Digital Almaty 2024: Industry X» эл аралык санарип форумуна катышат. 
+ 
+ЕӨАКтин жыйынынын жүрүшүндө ЕАЭБге катышуучу тараптардын өкмөт башчылары соода-экономикалык кызматташуунун, ошондой эле техникалык жөнгө салуу, Биримдиктин интеграцияланган маалымат тутуму жана башка актуалдуу маселелердин кеңири чөйрөсүн карашат. 
+ 
+Кыргыз Республикасынын Министрлер Кабинетинин Төрагасы Акылбек Жапаров ЕАЭБ өлкөлөрүнүн өкмөт башчылары менен бирге жыл сайын өтүүчү «Digital Almaty» санарип форумунун пленардык жыйынына катышат. 
+ 
+Форумга белгилүү эл аралык жана коомдук ишмерлер, ири IT-компаниялардын жетекчилери жана бизнес өкүлдөрү катышаары күтүлүүдө. 
+Мындан тышкары, визиттин алкагында делегация башчыларынын, анын ичинде Кыргыз Республикасынын, Россия Федерациясынын Өкмөтүнүн Төрагасы Михаил Мишустин жана Казакстан Республикасынын Премьер-министринин Алихан Смаилов ортосунда бир катар эки тараптуу жолугушуулар өткөрүлөт. 
+ 
+Жолугушуулардын жүрүшүндө тараптар көп кырдуу кызматташуунун актуалдуу маселелерин талкуулашат жана бир катар маанилүү багыттар боюнча макулдашууларды ишке ашыруу боюнча мөөнөттөрүнө көз салышат.
+woman
+[31/Jan/2024 12:50:15] "POST /text_to_speech/ HTTP/1.1" 200 8248
+[31/Jan/2024 12:50:15] "GET /media/1706683815audio915380.mp3 HTTP/1.1" 200 373047
+Биринчи экинчи февралда Министрлер Кабинетинин башчысы Акылбек Жапаровдун Казакстан Республикасына иш сапары болот. 
+ 
+Үстүбүздөгү жылдын Биринчи экинчи февралында Алматы шаарында (Казакстан Республикасы) Министрлер Кабинетинин Төрагасы – Кыргыз Республикасынын Президентинин Аппаратынын Жетекчиси Акылбек Жапаровдун жумушчу сапары болот. 
+ 
+Сапардын алкагында министрлер кабинетинин башчысы Евразиялык өкмөттөр аралык кеңештин жыйынына жана «Digital Almaty 2024: Industry X» эл аралык санарип форумуна катышат. 
+ 
+ЕӨАКтин жыйынынын жүрүшүндө ЕАЭБге катышуучу тараптардын өкмөт башчылары соода-экономикалык кызматташуунун, ошондой эле техникалык жөнгө салуу, Биримдиктин интеграцияланган маалымат тутуму жана башка актуалдуу маселелердин кеңири чөйрөсүн карашат. 
+ 
+Кыргыз Республикасынын Министрлер Кабинетинин Төрагасы Акылбек Жапаров ЕАЭБ өлкөлөрүнүн өкмөт башчылары менен бирге жыл сайын өтүүчү «Digital Almaty» санарип форумунун пленардык жыйынына катышат. 
+ 
+Форумга белгилүү эл аралык жана коомдук ишмерлер, ири IT-компаниялардын жетекчилери жана бизнес өкүлдөрү катышаары күтүлүүдө. 
+Мындан тышкары, визиттин алкагында делегация башчыларынын, анын ичинде Кыргыз Республикасынын, Россия Федерациясынын Өкмөтүнүн Төрагасы Михаил Мишустин жана Казакстан Республикасынын Премьер-министринин Алихан Смаилов ортосунда бир катар эки тараптуу жолугушуулар өткөрүлөт. 
+ 
+Жолугушуулардын жүрүшүндө тараптар көп кырдуу кызматташуунун актуалдуу маселелерин талкуулашат жана бир катар маанилүү багыттар боюнча макулдашууларды ишке ашыруу боюнча мөөнөттөрүнө көз салышат.
+woman
+[31/Jan/2024 12:50:47] "POST /text_to_speech/ HTTP/1.1" 200 8324
+[31/Jan/2024 12:50:47] "GET /media/1706683846audio675349.mp3 HTTP/1.1" 200 377331
+[31/Jan/2024 12:52:37] "GET /static/chatbot/css/style.css HTTP/1.1" 200 17592
+[31/Jan/2024 12:53:00] "GET /media/1706683846audio675349.mp3 HTTP/1.1" 200 377331
+[31/Jan/2024 12:53:00] "GET /media/1706683846audio675349.mp3 HTTP/1.1" 200 377331
+[31/Jan/2024 12:53:04] "GET /media/1706683846audio675349.mp3 HTTP/1.1" 200 377331
+Биринчи экинчи февралда Министрлер Кабинетинин башчысы Акылбек Жапаровдун Казакстан Республикасына иш сапары болот. 
+ 
+Үстүбүздөгү жылдын Биринчи экинчи февралында Алматы шаарында (Казакстан Республикасы) Министрлер Кабинетинин Төрагасы – Кыргыз Республикасынын Президентинин Аппаратынын Жетекчиси Акылбек Жапаровдун жумушчу сапары болот. 
+ 
+Сапардын алкагында министрлер кабинетинин башчысы Евразиялык өкмөттөр аралык кеңештин жыйынына жана «Digital Almaty 2024: Industry X» эл аралык санарип форумуна катышат. 
+ 
+ЕӨАКтин жыйынынын жүрүшүндө ЕАЭБге катышуучу тараптардын өкмөт башчылары соода-экономикалык кызматташуунун, ошондой эле техникалык жөнгө салуу, Биримдиктин интеграцияланган маалымат тутуму жана башка актуалдуу маселелердин кеңири чөйрөсүн карашат. 
+ 
+Кыргыз Республикасынын Министрлер Кабинетинин Төрагасы Акылбек Жапаров ЕАЭБ өлкөлөрүнүн өкмөт башчылары менен бирге жыл сайын өтүүчү «Digital Almaty» санарип форумунун пленардык жыйынына катышат. 
+ 
+Форумга белгилүү эл аралык жана коомдук ишмерлер, ири IT-компаниялардын жетекчилери жана бизнес өкүлдөрү катышаары күтүлүүдө. 
+Мындан тышкары, визиттин алкагында делегация башчыларынын, анын ичинде Кыргыз Республикасынын, Россия Федерациясынын Өкмөтүнүн Төрагасы Михаил Мишустин жана Казакстан Республикасынын Премьер-министринин Алихан Смаилов ортосунда бир катар эки тараптуу жолугушуулар өткөрүлөт. 
+ 
+Жолугушуулардын жүрүшүндө тараптар көп кырдуу кызматташуунун актуалдуу маселелерин талкуулашат жана бир катар маанилүү багыттар боюнча макулдашууларды ишке ашыруу боюнча мөөнөттөрүнө көз салышат.
+man
+/mnt/ks/Works/matchaTTS/data/generated_audios/1706684088audio267882.mp3
+[31/Jan/2024 12:54:49] "POST /text_to_speech/ HTTP/1.1" 200 8323
+[31/Jan/2024 12:54:49] "GET /media/1706684088audio267882.mp3 HTTP/1.1" 200 453190
+[31/Jan/2024 12:55:19] "GET /media/1706684088audio267882.mp3 HTTP/1.1" 200 453190
+[31/Jan/2024 12:55:19] "GET /media/1706684088audio267882.mp3 HTTP/1.1" 200 453190
+[31/Jan/2024 12:55:28] "GET /media/1706684088audio267882.mp3 HTTP/1.1" 200 453190
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[31/Jan/2024 14:39:49] "GET / HTTP/1.1" 200 7356
+[31/Jan/2024 14:39:50] "GET /static/chatbot/css/style.css HTTP/1.1" 200 17592
+[31/Jan/2024 14:39:50] "GET /static/chatbot/img/gerb.png HTTP/1.1" 200 19607
+[31/Jan/2024 14:39:50] "GET /static/chatbot/img/til.png HTTP/1.1" 200 19191
+[31/Jan/2024 14:39:50] "GET /static/chatbot/img/speech.jpg HTTP/1.1" 200 45921
+[31/Jan/2024 14:39:53] "GET /text_to_speech/ HTTP/1.1" 200 13188
+f;sejgr;awr
+woman
+Internal Server Error: /text_to_speech/
+Traceback (most recent call last):
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+  File "/home/user/anaconda3/envs/site/lib/python3.8/http/client.py", line 1251, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/http/client.py", line 1011, in _send_output
+    self.send(msg)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/http/client.py", line 951, in send
+    self.connect()
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7fbe282d7c70>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='0.0.0.0', port=8089): Max retries exceeded with url: /api/tts (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fbe282d7c70>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/django/utils/decorators.py", line 134, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/chatbot/views.py", line 131, in text_to_speech
+    response = requests.post(api_url, json=data_to_send)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='0.0.0.0', port=8089): Max retries exceeded with url: /api/tts (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fbe282d7c70>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[31/Jan/2024 14:39:57] "POST /text_to_speech/ HTTP/1.1" 500 197497
+пукцжлпьцудпр
+woman
+Internal Server Error: /text_to_speech/
+Traceback (most recent call last):
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+  File "/home/user/anaconda3/envs/site/lib/python3.8/http/client.py", line 1251, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/http/client.py", line 1011, in _send_output
+    self.send(msg)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/http/client.py", line 951, in send
+    self.connect()
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7fbe28175850>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='0.0.0.0', port=8089): Max retries exceeded with url: /api/tts (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fbe28175850>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/django/utils/decorators.py", line 134, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/chatbot/views.py", line 131, in text_to_speech
+    response = requests.post(api_url, json=data_to_send)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='0.0.0.0', port=8089): Max retries exceeded with url: /api/tts (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fbe28175850>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[31/Jan/2024 14:40:06] "POST /text_to_speech/ HTTP/1.1" 500 198159
+Бишкекте 1.5 млн адам жашайт
+woman
+[31/Jan/2024 14:41:58] "POST /text_to_speech/ HTTP/1.1" 200 282
+[31/Jan/2024 14:41:58] "GET /media/1706690518audio64449.mp3 HTTP/1.1" 200 11407
+[31/Jan/2024 14:42:00] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+Бишкекте 1.65 миң адам жашайт 1-мартка карата 
+woman
+[31/Jan/2024 14:42:38] "POST /text_to_speech/ HTTP/1.1" 200 361
+[31/Jan/2024 14:42:38] "GET /media/1706690558audio965846.mp3 HTTP/1.1" 200 20289
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[31/Jan/2024 14:45:56] "GET / HTTP/1.1" 200 7356
+[31/Jan/2024 14:45:56] "GET /static/chatbot/css/style.css HTTP/1.1" 200 17592
+[31/Jan/2024 14:45:56] "GET /static/chatbot/img/gerb.png HTTP/1.1" 200 19607
+[31/Jan/2024 14:45:56] "GET /static/chatbot/img/til.png HTTP/1.1" 200 19191
+[31/Jan/2024 14:45:56] "GET /static/chatbot/img/speech.jpg HTTP/1.1" 200 45921
+[31/Jan/2024 14:45:57] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[31/Jan/2024 14:48:16] "GET / HTTP/1.1" 200 7356
+[31/Jan/2024 14:48:31] "GET /text_to_speech/ HTTP/1.1" 200 13188
+[31/Jan/2024 14:48:31] "GET /static/chatbot/css/style.css HTTP/1.1" 200 17592
+1000000
+woman
+[31/Jan/2024 14:48:37] "POST /text_to_speech/ HTTP/1.1" 200 157
+[31/Jan/2024 14:48:37] "GET /media/1706690917audio951485.mp3 HTTP/1.1" 200 6078
+[31/Jan/2024 14:48:39] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+10000
+woman
+[31/Jan/2024 14:48:52] "POST /text_to_speech/ HTTP/1.1" 200 155
+[31/Jan/2024 14:48:52] "GET /media/1706690932audio938415.mp3 HTTP/1.1" 200 4407
+100
+woman
+[31/Jan/2024 14:49:06] "POST /text_to_speech/ HTTP/1.1" 200 153
+[31/Jan/2024 14:49:06] "GET /media/1706690946audio765157.mp3 HTTP/1.1" 200 3048
+10
+woman
+[31/Jan/2024 14:49:15] "POST /text_to_speech/ HTTP/1.1" 200 152
+[31/Jan/2024 14:49:15] "GET /media/1706690955audio671921.mp3 HTTP/1.1" 200 3153
+6
+woman
+[31/Jan/2024 14:49:23] "POST /text_to_speech/ HTTP/1.1" 200 151
+[31/Jan/2024 14:49:23] "GET /media/1706690963audio182787.mp3 HTTP/1.1" 200 3675
+87
+woman
+[31/Jan/2024 14:50:16] "POST /text_to_speech/ HTTP/1.1" 200 152
+[31/Jan/2024 14:50:16] "GET /media/1706691016audio776451.mp3 HTTP/1.1" 200 4511
+2
+woman
+[31/Jan/2024 14:50:26] "POST /text_to_speech/ HTTP/1.1" 200 151
+[31/Jan/2024 14:50:26] "GET /media/1706691025audio651235.mp3 HTTP/1.1" 200 3466
+1234
+woman
+[31/Jan/2024 14:50:40] "POST /text_to_speech/ HTTP/1.1" 200 154
+[31/Jan/2024 14:50:40] "GET /media/1706691039audio240030.mp3 HTTP/1.1" 200 6705
+1999
+woman
+[31/Jan/2024 14:50:50] "POST /text_to_speech/ HTTP/1.1" 200 154
+[31/Jan/2024 14:50:50] "GET /media/1706691050audio677109.mp3 HTTP/1.1" 200 8064
+1909348
+woman
+[31/Jan/2024 14:51:00] "POST /text_to_speech/ HTTP/1.1" 200 157
+[31/Jan/2024 14:51:00] "GET /media/1706691059audio555242.mp3 HTTP/1.1" 200 13811
+Бишкекте 6 адам бар
+woman
+[31/Jan/2024 14:51:40] "POST /text_to_speech/ HTTP/1.1" 200 244
+[31/Jan/2024 14:51:40] "GET /media/1706691100audio757621.mp3 HTTP/1.1" 200 6078
+Бишкекте 6 адам бар 76
+woman
+[31/Jan/2024 14:51:58] "POST /text_to_speech/ HTTP/1.1" 200 245
+[31/Jan/2024 14:51:58] "GET /media/1706691118audio9967.mp3 HTTP/1.1" 200 9945
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[31/Jan/2024 14:55:57] "GET / HTTP/1.1" 200 7356
+[31/Jan/2024 14:55:58] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+423
+woman
+[31/Jan/2024 15:00:33] "POST /text_to_speech/ HTTP/1.1" 200 153
+[31/Jan/2024 15:00:33] "GET /media/1706691633audio117632.mp3 HTTP/1.1" 200 7019
+112
+woman
+[31/Jan/2024 15:00:43] "POST /text_to_speech/ HTTP/1.1" 200 153
+[31/Jan/2024 15:00:43] "GET /media/1706691642audio795303.mp3 HTTP/1.1" 200 4825
+113
+woman
+[31/Jan/2024 15:00:51] "POST /text_to_speech/ HTTP/1.1" 200 153
+[31/Jan/2024 15:00:51] "GET /media/1706691651audio320113.mp3 HTTP/1.1" 200 4511
+113213
+woman
+[31/Jan/2024 15:01:06] "POST /text_to_speech/ HTTP/1.1" 200 156
+[31/Jan/2024 15:01:06] "GET /media/1706691666audio735205.mp3 HTTP/1.1" 200 9109
+113213232
+woman
+[31/Jan/2024 15:03:23] "POST /text_to_speech/ HTTP/1.1" 200 159
+[31/Jan/2024 15:03:23] "GET /media/1706691802audio421547.mp3 HTTP/1.1" 200 16736
+7638468213
+woman
+[31/Jan/2024 15:04:16] "POST /text_to_speech/ HTTP/1.1" 200 160
+[31/Jan/2024 15:04:16] "GET /media/1706691856audio379423.mp3 HTTP/1.1" 200 22483
+123
+woman
+[31/Jan/2024 15:07:13] "POST /text_to_speech/ HTTP/1.1" 200 152
+[31/Jan/2024 15:07:13] "GET /media/1706692033audio73054.mp3 HTTP/1.1" 200 5974
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[31/Jan/2024 17:38:38] "GET / HTTP/1.1" 200 7356
+[31/Jan/2024 17:38:39,031] - Broken pipe from ('80.82.77.33', 33246)
+----------------------------------------
+Exception happened during processing of request from ('80.82.77.33', 45412)
+Traceback (most recent call last):
+  File "/home/user/anaconda3/envs/site/lib/python3.8/socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/socketserver.py", line 747, in __init__
+    self.handle()
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/django/core/servers/basehttp.py", line 202, in handle
+    self.handle_one_request()
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/django/core/servers/basehttp.py", line 212, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/socket.py", line 669, in readinto
+    return self._sock.recv_into(b)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+ssl.SSLError: [SSL: UNEXPECTED_RECORD] unexpected record (_ssl.c:2635)
+----------------------------------------
+[31/Jan/2024 17:38:56] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+Not Found: /aaa9
+[31/Jan/2024 17:38:58] "GET /aaa9 HTTP/1.1" 404 3996
+Not Found: /aad7
+[31/Jan/2024 17:38:59] "GET /aad7 HTTP/1.1" 404 3996
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[31/Jan/2024 19:54:10] "GET / HTTP/1.1" 200 7356
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[31/Jan/2024 19:54:14] "GET / HTTP/1.1" 200 7356
+[31/Jan/2024 19:54:17] code 505, message Invalid HTTP version (2.0)
+[31/Jan/2024 19:54:17] "PRI * HTTP/2.0" 505 -
+[31/Jan/2024 19:54:17] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+Not Found: /favicon.ico
+[31/Jan/2024 19:54:18] "GET /favicon.ico HTTP/1.1" 404 4017
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[31/Jan/2024 21:20:35] "GET / HTTP/1.1" 200 7356
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[31/Jan/2024 21:20:41] "GET / HTTP/1.1" 200 7356
+[31/Jan/2024 21:20:43] code 505, message Invalid HTTP version (2.0)
+[31/Jan/2024 21:20:43] "PRI * HTTP/2.0" 505 -
+[31/Jan/2024 21:20:45] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+Not Found: /favicon.ico
+[31/Jan/2024 21:20:47] "GET /favicon.ico HTTP/1.1" 404 4017
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[01/Feb/2024 08:10:16] "GET / HTTP/1.1" 200 7356
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[01/Feb/2024 08:10:20] "GET / HTTP/1.1" 200 7356
+[01/Feb/2024 08:10:20] code 505, message Invalid HTTP version (2.0)
+[01/Feb/2024 08:10:20] "PRI * HTTP/2.0" 505 -
+[01/Feb/2024 08:10:20] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+Not Found: /favicon.ico
+[01/Feb/2024 08:10:21] "GET /favicon.ico HTTP/1.1" 404 4017
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[01/Feb/2024 12:24:46] "GET / HTTP/1.1" 200 7356
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[01/Feb/2024 12:24:50] "GET / HTTP/1.1" 200 7356
+[01/Feb/2024 12:24:51] code 505, message Invalid HTTP version (2.0)
+[01/Feb/2024 12:24:51] "PRI * HTTP/2.0" 505 -
+[01/Feb/2024 12:24:51] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+Not Found: /favicon.ico
+[01/Feb/2024 12:24:52] "GET /favicon.ico HTTP/1.1" 404 4017
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[01/Feb/2024 15:09:51] "GET / HTTP/1.1" 200 7356
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[01/Feb/2024 15:09:54] "GET / HTTP/1.1" 200 7356
+[01/Feb/2024 15:09:55] code 505, message Invalid HTTP version (2.0)
+[01/Feb/2024 15:09:55] "PRI * HTTP/2.0" 505 -
+[01/Feb/2024 15:09:55] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+Not Found: /favicon.ico
+[01/Feb/2024 15:09:55] "GET /favicon.ico HTTP/1.1" 404 4017
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[02/Feb/2024 20:35:13] "GET / HTTP/1.1" 200 7356
+[02/Feb/2024 20:35:14] code 505, message Invalid HTTP version (2.0)
+[02/Feb/2024 20:35:14] "PRI * HTTP/2.0" 505 -
+[02/Feb/2024 20:35:14] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+Not Found: /favicon.ico
+[02/Feb/2024 20:35:15] "GET /favicon.ico HTTP/1.1" 404 4017
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[03/Feb/2024 05:58:28] "GET / HTTP/1.1" 200 7356
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[03/Feb/2024 05:58:32] "GET / HTTP/1.1" 200 7356
+[03/Feb/2024 05:58:33] code 505, message Invalid HTTP version (2.0)
+[03/Feb/2024 05:58:33] "PRI * HTTP/2.0" 505 -
+[03/Feb/2024 05:58:34] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+Not Found: /favicon.ico
+[03/Feb/2024 05:58:34] "GET /favicon.ico HTTP/1.1" 404 4017
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[03/Feb/2024 21:54:03] "GET / HTTP/1.1" 200 7356
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[04/Feb/2024 05:46:51] "GET / HTTP/1.1" 200 7356
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[04/Feb/2024 05:46:57] "GET / HTTP/1.1" 200 7356
+[04/Feb/2024 05:46:57] code 505, message Invalid HTTP version (2.0)
+[04/Feb/2024 05:46:57] "PRI * HTTP/2.0" 505 -
+[04/Feb/2024 05:46:58] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+Not Found: /favicon.ico
+[04/Feb/2024 05:46:59] "GET /favicon.ico HTTP/1.1" 404 4017
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[04/Feb/2024 18:55:17] "GET / HTTP/1.1" 200 7356
+[04/Feb/2024 18:55:38] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+Not Found: /robots.txt
+[04/Feb/2024 18:55:39] "GET /robots.txt HTTP/1.1" 404 4014
+Not Found: /sitemap.xml
+[04/Feb/2024 18:55:41] "GET /sitemap.xml HTTP/1.1" 404 4017
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[04/Feb/2024 23:28:32] "GET / HTTP/1.1" 200 7356
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[04/Feb/2024 23:28:35] "GET / HTTP/1.1" 200 7356
+[04/Feb/2024 23:28:35] code 505, message Invalid HTTP version (2.0)
+[04/Feb/2024 23:28:35] "PRI * HTTP/2.0" 505 -
+[04/Feb/2024 23:28:36] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+Not Found: /favicon.ico
+[04/Feb/2024 23:28:36] "GET /favicon.ico HTTP/1.1" 404 4017
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[05/Feb/2024 09:41:38] "GET / HTTP/1.1" 200 7356
+[05/Feb/2024 09:41:43,246] - Broken pipe from ('3.86.26.242', 60806)
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[05/Feb/2024 16:43:58] "GET / HTTP/1.1" 200 7356
+[05/Feb/2024 16:43:58] "GET /static/chatbot/css/style.css HTTP/1.1" 200 17592
+[05/Feb/2024 16:43:59] "GET /static/chatbot/img/til.png HTTP/1.1" 200 19191
+[05/Feb/2024 16:43:59] "GET /static/chatbot/img/gerb.png HTTP/1.1" 200 19607
+[05/Feb/2024 16:43:59] "GET /static/chatbot/img/speech.jpg HTTP/1.1" 200 45921
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[05/Feb/2024 16:47:47] "GET / HTTP/1.1" 200 7356
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[05/Feb/2024 17:23:31] "GET / HTTP/1.1" 200 7356
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[05/Feb/2024 18:15:28] "GET / HTTP/1.1" 200 7356
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[05/Feb/2024 23:18:02] "GET / HTTP/1.1" 200 7356
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[05/Feb/2024 23:18:06] "GET / HTTP/1.1" 200 7356
+[05/Feb/2024 23:18:06] code 505, message Invalid HTTP version (2.0)
+[05/Feb/2024 23:18:06] "PRI * HTTP/2.0" 505 -
+[05/Feb/2024 23:18:07] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+Not Found: /favicon.ico
+[05/Feb/2024 23:18:08] "GET /favicon.ico HTTP/1.1" 404 4017
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[06/Feb/2024 02:32:14] "GET / HTTP/1.1" 200 7356
+[06/Feb/2024 02:32:15] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[06/Feb/2024 06:31:40] "GET / HTTP/1.1" 200 7356
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[06/Feb/2024 06:31:44] "GET / HTTP/1.1" 200 7356
+[06/Feb/2024 06:31:44] code 505, message Invalid HTTP version (2.0)
+[06/Feb/2024 06:31:44] "PRI * HTTP/2.0" 505 -
+[06/Feb/2024 06:31:44] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+Not Found: /favicon.ico
+[06/Feb/2024 06:31:45] "GET /favicon.ico HTTP/1.1" 404 4017
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[06/Feb/2024 09:24:39] "GET / HTTP/1.1" 200 7356
+[06/Feb/2024 09:24:40] code 400, message Bad HTTP/0.9 request type ('t3')
+[06/Feb/2024 09:24:40] "t3 12.1.2" 400 -
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/chatbot/views.py changed, reloading.
+Watching for file changes with StatReloader
+Validating models...
+
+System check identified no issues (0 silenced).
+February 06, 2024 - 14:44:58
+Django version 4.1.7, using settings 'django_chatbot.settings'
+Starting development server at https://80.72.180.130:8085/
+Using SSL certificate: /etc/ssl/certs/django_site2.crt
+Using SSL key: /mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/django_site2.key
+Quit the server with CONTROL-C.
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/chatbot/views.py changed, reloading.
+Watching for file changes with StatReloader
+Validating models...
+
+System check identified no issues (0 silenced).
+February 06, 2024 - 14:46:32
+Django version 4.1.7, using settings 'django_chatbot.settings'
+Starting development server at https://80.72.180.130:8085/
+Using SSL certificate: /etc/ssl/certs/django_site2.crt
+Using SSL key: /mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/django_site2.key
+Quit the server with CONTROL-C.
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[06/Feb/2024 16:32:15] "GET / HTTP/1.1" 200 7356
+Invalid HTTP_HOST header: 'laravelbektemir.duckdns.org:8085'. You may need to add 'laravelbektemir.duckdns.org' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/django/utils/deprecation.py", line 135, in __call__
+    response = self.process_request(request)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/django/http/request.py", line 152, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'laravelbektemir.duckdns.org:8085'. You may need to add 'laravelbektemir.duckdns.org' to ALLOWED_HOSTS.
+Bad Request: /
+[06/Feb/2024 16:32:27] "GET / HTTP/1.1" 400 69844
+Invalid HTTP_HOST header: 'laravelbektemir.duckdns.org:8085'. You may need to add 'laravelbektemir.duckdns.org' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/django/utils/deprecation.py", line 135, in __call__
+    response = self.process_request(request)
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/user/anaconda3/envs/site/lib/python3.8/site-packages/django/http/request.py", line 152, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'laravelbektemir.duckdns.org:8085'. You may need to add 'laravelbektemir.duckdns.org' to ALLOWED_HOSTS.
+Bad Request: /
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[06/Feb/2024 16:32:35] "GET / HTTP/1.1" 200 7356
+[06/Feb/2024 16:32:36] "GET / HTTP/1.1" 400 69320
+[06/Feb/2024 16:34:56] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[07/Feb/2024 03:58:05] "GET / HTTP/1.1" 200 7356
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[07/Feb/2024 03:58:09] "GET / HTTP/1.1" 200 7356
+[07/Feb/2024 03:58:09] code 505, message Invalid HTTP version (2.0)
+[07/Feb/2024 03:58:09] "PRI * HTTP/2.0" 505 -
+[07/Feb/2024 03:58:10] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+Not Found: /favicon.ico
+[07/Feb/2024 03:58:11] "GET /favicon.ico HTTP/1.1" 404 4017
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[07/Feb/2024 09:49:40] "GET / HTTP/1.1" 200 7356
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[07/Feb/2024 09:49:45] "GET / HTTP/1.1" 200 7356
+[07/Feb/2024 09:49:46] code 505, message Invalid HTTP version (2.0)
+[07/Feb/2024 09:49:46] "PRI * HTTP/2.0" 505 -
+[07/Feb/2024 09:49:47] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+Not Found: /favicon.ico
+[07/Feb/2024 09:49:47] "GET /favicon.ico HTTP/1.1" 404 4017
+Watching for file changes with StatReloader
+Validating models...
+
+System check identified no issues (0 silenced).
+February 08, 2024 - 10:06:36
+Django version 4.1.7, using settings 'django_chatbot.settings'
+Starting development server at https://80.72.180.130:8787/
+Using SSL certificate: /etc/ssl/certs/django_site2.crt
+Using SSL key: /mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/django_site2.key
+Quit the server with CONTROL-C.
+[08/Feb/2024 10:07:05] "GET /text_to_speech/ HTTP/1.1" 200 13188
+[08/Feb/2024 10:07:05] "GET /static/chatbot/css/style.css HTTP/1.1" 200 17592
+[08/Feb/2024 10:07:06] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+салам
+woman
+[08/Feb/2024 10:07:16] "POST /text_to_speech/ HTTP/1.1" 200 180
+[08/Feb/2024 10:07:16] "GET /media/1707365236audio488492.mp3 HTTP/1.1" 200 2735
+[08/Feb/2024 10:09:02] "GET /text_to_speech/ HTTP/1.1" 200 13188
+[08/Feb/2024 10:09:02] "GET /static/chatbot/css/style.css HTTP/1.1" 200 17592
+[08/Feb/2024 10:09:02] "GET /static/chatbot/img/til.png HTTP/1.1" 200 19191
+[08/Feb/2024 10:09:03] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+менин атым талгат
+woman
+[08/Feb/2024 10:09:40] "POST /text_to_speech/ HTTP/1.1" 200 242
+[08/Feb/2024 10:09:40] "GET /media/1707365380audio873126.mp3 HTTP/1.1" 200 5138
+[08/Feb/2024 10:09:42] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+[08/Feb/2024 10:10:11] "GET /text_to_speech/ HTTP/1.1" 200 13188
+[08/Feb/2024 10:10:11] "GET /static/chatbot/css/style.css HTTP/1.1" 200 17592
+[08/Feb/2024 10:10:11] "GET /static/chatbot/img/til.png HTTP/1.1" 200 19191
+[08/Feb/2024 10:10:18] "GET /speech/ HTTP/1.1" 200 13037
+[08/Feb/2024 10:10:21] "GET /chatbot/ HTTP/1.1" 200 20973
+[08/Feb/2024 10:10:41] "POST /chatbot/ HTTP/1.1" 200 270
+[08/Feb/2024 10:18:39] "GET /speech_to_text/ HTTP/1.1" 200 11302
+[08/Feb/2024 10:18:39] "GET /static/chatbot/css/style.css HTTP/1.1" 200 17592
+[08/Feb/2024 10:18:39] "GET /static/chatbot/img/til.png HTTP/1.1" 200 19191
+[08/Feb/2024 10:18:41] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+[08/Feb/2024 10:21:14] "GET /text_to_speech/ HTTP/1.1" 200 13188
+[08/Feb/2024 10:21:15] "GET /static/chatbot/css/style.css HTTP/1.1" 200 17592
+[08/Feb/2024 10:21:15] "GET /static/chatbot/img/til.png HTTP/1.1" 200 19191
+[08/Feb/2024 10:21:17] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+Салам
+woman
+[08/Feb/2024 10:21:26] "POST /text_to_speech/ HTTP/1.1" 200 180
+[08/Feb/2024 10:21:27] "GET /media/1707366086audio209887.mp3 HTTP/1.1" 200 2735
+[08/Feb/2024 10:21:35] "GET /speech/ HTTP/1.1" 200 13037
+[08/Feb/2024 10:21:44] "GET /text_to_speech/ HTTP/1.1" 200 13188
+[08/Feb/2024 10:21:50] "GET /speech/ HTTP/1.1" 200 13037
+[08/Feb/2024 10:21:52] "GET /chatbot/ HTTP/1.1" 200 20973
+[08/Feb/2024 10:21:52] "GET /static/chatbot/css/style.css HTTP/1.1" 200 17592
+[08/Feb/2024 10:21:52] "GET /static/chatbot/img/til.png HTTP/1.1" 200 19191
+[08/Feb/2024 10:21:52] "GET /chatbot/ HTTP/1.1" 200 20973
+audio_3pjg_vtvc.wav
+Input: биздин
+/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/connectionpool.py:1100: InsecureRequestWarning: Unverified HTTPS request is being made to host '80.72.180.130'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[08/Feb/2024 10:22:05] "POST /chatbot/ HTTP/1.1" 200 128
+[08/Feb/2024 10:22:12] "POST /chatbot/ HTTP/1.1" 200 126
+[08/Feb/2024 10:22:17] "GET /text_to_speech/ HTTP/1.1" 200 13188
+[08/Feb/2024 10:22:18] "GET /speech_to_text/ HTTP/1.1" 200 11302
+[08/Feb/2024 10:22:23] "GET /chatbot/ HTTP/1.1" 200 20973
+Answer from Mistral: н 1. Көптүк сандарды колдонуу: "Биз" дегенди колдонуу кыймыл-аракетти же окуяны бөлүшкөн адамдар тобуна карата аларга тиешеси жок болушу мүмкүн. Анын ордуна, сиз "биз" дегенди колдонгондо, ал баяндамачынын же жазуучунун топко таандык экенин көрсөтүп турат. 2. Спецификалык маанидеги айтылышы: "Биз" деген сөздүн айтылышындагы ар кандай тыбыштары бар
+1707366151audio346033.mp3
+[08/Feb/2024 10:22:31] "POST /speech/ HTTP/1.1" 200 126
+[08/Feb/2024 10:22:32] "GET /media/audio_3pjg_vtvc_new.wav HTTP/1.1" 200 149804
+[08/Feb/2024 10:22:33] "GET /media/1707366151audio346033.mp3 HTTP/1.1" 200 87789
+audio_b9l2_21kx.wav
+Input: — Салам-салам бейр эки үч
+/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/connectionpool.py:1100: InsecureRequestWarning: Unverified HTTPS request is being made to host '80.72.180.130'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+Answer from Mistral: ч 1. "Салам, кандайсың?" 2. "Бул жердеби?" 3. "Кутман таң!" 4. "Эй, бут акырына карайбыз" 5. "Жолугушууга кош келиңиз" 6. "Терезеден кирип келесиңби?" 7. "Азырынча салам" 8. "Мен сени укканды жакшы көрөм" 9. "Кабардар болосуңбу?" 10. "Салам, мен сизге бир нерсе керекпи?" 11. "Салам, баарыңарга кош келиңиз" 12. "Са
+1707366198audio667757.mp3
+[08/Feb/2024 10:23:18] "POST /speech/ HTTP/1.1" 200 126
+[08/Feb/2024 10:23:19] "GET /media/1707366198audio667757.mp3 HTTP/1.1" 200 85177
+[08/Feb/2024 10:23:19] "GET /media/audio_b9l2_21kx_new.wav HTTP/1.1" 200 257324
+[08/Feb/2024 10:23:26] "GET /speech_to_text/ HTTP/1.1" 200 11302
+— Салам бир эки үч
+[08/Feb/2024 10:23:32] "POST /speech_to_text/ HTTP/1.1" 200 164
+[08/Feb/2024 10:23:32] "GET /media/audio_y4wh_5kse_new.wav HTTP/1.1" 200 195884
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[08/Feb/2024 10:24:33] "GET / HTTP/1.1" 200 7356
+[08/Feb/2024 10:24:33] "GET /static/chatbot/css/style.css HTTP/1.1" 200 17592
+[08/Feb/2024 10:24:34] "GET /static/chatbot/img/til.png HTTP/1.1" 200 19191
+[08/Feb/2024 10:24:34] "GET /static/chatbot/img/speech.jpg HTTP/1.1" 200 45921
+[08/Feb/2024 10:24:34] "GET /static/chatbot/img/gerb.png HTTP/1.1" 200 19607
+[08/Feb/2024 10:24:34] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+[08/Feb/2024 10:24:37] "GET /text_to_speech/ HTTP/1.1" 200 13188
+[08/Feb/2024 10:25:12] "GET /chatbot/ HTTP/1.1" 200 20973
+[08/Feb/2024 10:25:18] "POST /chatbot/ HTTP/1.1" 200 128
+а, о, у, ы тамгаларынын алдында турса же ээрчисе
+woman
+[08/Feb/2024 10:26:11] "POST /text_to_speech/ HTTP/1.1" 200 382
+[08/Feb/2024 10:26:11] "GET /media/1707366371audio83963.mp3 HTTP/1.1" 200 14751
+а, о, у, ы тамгаларынын алдында турса же ээрчисе
+man
+/mnt/ks/Works/matchaTTS/data/generated_audios/1707366415audio714.mp3
+[08/Feb/2024 10:26:55] "POST /text_to_speech/ HTTP/1.1" 200 379
+[08/Feb/2024 10:26:55] "GET /media/1707366415audio714.mp3 HTTP/1.1" 200 19558
+а, о, у, ы тамгаларынын алдында турса же ээрчисе
+woman
+[08/Feb/2024 10:27:03] "POST /text_to_speech/ HTTP/1.1" 200 383
+[08/Feb/2024 10:27:03] "GET /media/1707366423audio920897.mp3 HTTP/1.1" 200 14751
+[08/Feb/2024 10:27:13] "GET /speech/ HTTP/1.1" 200 13037
+[08/Feb/2024 10:27:15] "GET /chatbot/ HTTP/1.1" 200 20973
+[08/Feb/2024 10:27:17] "GET /text_to_speech/ HTTP/1.1" 200 13188
+[08/Feb/2024 10:27:18] "GET /speech/ HTTP/1.1" 200 13037
+audio_4cfx_8xge.wav
+Input: мен угуп атасыңарбы ыя
+/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/connectionpool.py:1100: InsecureRequestWarning: Unverified HTTPS request is being made to host '80.72.180.130'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+Answer from Mistral: я Ыйман, бул жерде сизге керек болгон нерселериңиздин баары бар. Мен сага кантип жардам бере аларымды билбейм, мага кабарлаңыз. Өтүп кетсин! 🤗 ☁️ 🌈 🎂 🍰 🎉 🎊 🎄 🎅 🎁 🎁 🎁 🎁 🎁 🎁 🎁 🎁 🎁 🎁 🎁 🎁 🎁 🎁 🎁 🎁
+1707366474audio954957.mp3
+[08/Feb/2024 10:27:54] "POST /speech/ HTTP/1.1" 200 126
+[08/Feb/2024 10:27:54] "GET /media/audio_4cfx_8xge_new.wav HTTP/1.1" 200 246904
+[08/Feb/2024 10:27:54] "GET /media/1707366474audio954957.mp3 HTTP/1.1" 200 52263
+[08/Feb/2024 10:28:09] "GET /speech_to_text/ HTTP/1.1" 200 11302
+тегеретет тегеретет тепсем топту өйдө чыгып өйдө учту футбол ойноп жатканда
+[08/Feb/2024 10:28:19] "POST /speech_to_text/ HTTP/1.1" 200 476
+[08/Feb/2024 10:28:20] "GET /media/audio_wkb9_jfs6_new.wav HTTP/1.1" 200 474744
+[08/Feb/2024 10:28:25] "GET /chatbot/ HTTP/1.1" 200 20973
+[08/Feb/2024 10:28:26] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+[08/Feb/2024 10:28:35] "POST /chatbot/ HTTP/1.1" 200 169
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[08/Feb/2024 10:36:33] "GET / HTTP/1.0" 200 7356
+[08/Feb/2024 10:36:34] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+Not Found: /robots.txt
+[08/Feb/2024 10:36:52] "GET /robots.txt HTTP/1.1" 404 4014
+Not Found: /.well-known/security.txt
+[08/Feb/2024 10:36:54] "GET /.well-known/security.txt HTTP/1.1" 404 4056
+Watching for file changes with StatReloader
+Validating models...
+
+System check identified no issues (0 silenced).
+February 08, 2024 - 16:25:41
+Django version 4.1.7, using settings 'django_chatbot.settings'
+Starting development server at https://80.72.180.130:8787/
+Using SSL certificate: /etc/ssl/certs/django_site2.crt
+Using SSL key: /mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/django_site2.key
+Quit the server with CONTROL-C.
+[08/Feb/2024 16:26:12] "GET /chatbot/ HTTP/1.1" 200 20973
+[08/Feb/2024 16:26:12] "GET /static/chatbot/css/style.css HTTP/1.1" 200 17592
+[08/Feb/2024 16:26:12] "GET /static/chatbot/img/til.png HTTP/1.1" 200 19191
+[08/Feb/2024 16:26:17] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+[08/Feb/2024 16:26:29] "POST /chatbot/ HTTP/1.1" 200 120
+[08/Feb/2024 16:27:02] "GET /speech_to_text/ HTTP/1.1" 200 11302
+[08/Feb/2024 16:27:02] "GET /static/chatbot/css/style.css HTTP/1.1" 200 17592
+Кененин кыламында да.
+[08/Feb/2024 16:27:12] "POST /speech_to_text/ HTTP/1.1" 200 187
+[08/Feb/2024 16:27:12] "GET /media/audio_6pgw_d2uv_new.wav HTTP/1.1" 200 153644
+[08/Feb/2024 16:27:20] "GET /text_to_speech/ HTTP/1.1" 200 13188
+салам
+woman
+[08/Feb/2024 16:27:25] "POST /text_to_speech/ HTTP/1.1" 200 180
+[08/Feb/2024 16:27:25] "GET /media/1707388044audio130162.mp3 HTTP/1.1" 200 2735
+[08/Feb/2024 16:27:26] "GET /speech/ HTTP/1.1" 200 13037
+audio_ekhw_cpvk.wav
+Input:  ө.
+/home/user/anaconda3/envs/site/lib/python3.8/site-packages/urllib3/connectionpool.py:1100: InsecureRequestWarning: Unverified HTTPS request is being made to host '80.72.180.130'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+Answer from Mistral: . Өткөн чактагы "бар" этишинин колдонулушуна мисал келтире аласызбы? 15-майда мен дүкөнгө бардым. 20-июньда эртең менен паркка барам. 30-августта кафеге барбайм. 4-ноябрьде киного бардым. 6-январьда мектепке барган жокмун. 8-февральда ооруканага бардым. 10-мартта соода борборуна бардым. 12-апрельде китепканага бардым. 14-майда ресто
+1707388078audio144066.mp3
+[08/Feb/2024 16:27:58] "POST /speech/ HTTP/1.1" 200 126
+[08/Feb/2024 16:28:03] "GET /media/audio_ekhw_cpvk_new.wav HTTP/1.1" 200 119084
+[08/Feb/2024 16:28:04] "GET /media/1707388078audio144066.mp3 HTTP/1.1" 200 100433
+/mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/media/
+[08/Feb/2024 16:32:36] "GET / HTTP/1.1" 200 7356
+[08/Feb/2024 16:32:38] "GET /static/chatbot/img/speech.jpg HTTP/1.1" 200 45921
+[08/Feb/2024 16:32:38] "GET /static/chatbot/img/gerb.png HTTP/1.1" 200 19607
+[08/Feb/2024 16:33:07] "GET /chatbot/ HTTP/1.1" 200 20973
+[08/Feb/2024 16:33:15] "GET /static/chatbot/img/til.png HTTP/1.1" 200 19191
+[08/Feb/2024 16:59:20] "POST /chatbot/ HTTP/1.1" 200 126
+[08/Feb/2024 18:09:26] "GET /chatbot/ HTTP/1.1" 200 20973
+[08/Feb/2024 18:09:26] "GET /static/chatbot/css/style.css HTTP/1.1" 200 17592
+[08/Feb/2024 18:09:26] "GET /static/chatbot/img/til.png HTTP/1.1" 200 19191
+[08/Feb/2024 18:09:31] "GET /static/chatbot/img/favicon.ico HTTP/1.1" 200 1150
+[08/Feb/2024 18:09:41] "POST /chatbot/ HTTP/1.1" 200 120
+Watching for file changes with StatReloader
+Validating models...
+
+System check identified no issues (0 silenced).
+February 20, 2024 - 21:24:21
+Django version 4.1.7, using settings 'django_chatbot.settings'
+Starting development server at https://80.72.180.130:8787/
+Using SSL certificate: /etc/ssl/certs/django_site2.crt
+Using SSL key: /mnt/ks/Works/ChatbotAll/ChatbotHttps/django_chatbot/django_site2.key
+Quit the server with CONTROL-C.

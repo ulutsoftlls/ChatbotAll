@@ -39,7 +39,6 @@ text_error = '<ul class="errorlist"><li>text<ul class="errorlist"><li>Кайра
 captcha_error = '<ul class="errorlist"><li>captcha<ul class="errorlist"><li>Это поле обязательно для заполнения.</li></ul></li></ul>'
 
 def home(request):
-    print(MEDIA_ROOT)
     title = 'Башкы бет'
 
     context = {
@@ -61,15 +60,15 @@ def get_data_from_whisper(requests, url):
         return JsonResponse({"error": "Failed to send/receive data"}, status=500)
     return text
 
+#Matcha
 def get_data_from_tts(request, gender, text, audio_url):
-    api_url = 'http://0.0.0.0:8089/api/tts' 
+    api_url = 'http://0.0.0.0:8080/api/tts' 
     data_to_send = {"speaker_id": gender, "text": text}  
     response = requests.post(api_url, json=data_to_send)
     if response.status_code == 200:
         received_data = response.json()
         old_path = str(received_data['result'])
         file_name = str(received_data['result'])[46:]#strip old path
-        print(file_name)
         new_path = MEDIA_ROOT + str(file_name)
         shutil.move(old_path, new_path)
         request.session[audio_url] = file_name
@@ -80,12 +79,38 @@ def get_data_from_tts(request, gender, text, audio_url):
         response = requests.post(api_url, json=data_to_send)
         if response.status_code == 200:
             received_data = response.json()
-            print(received_data['result'])
             old_path = str(received_data['result'])
             file_name = str(received_data['result'])[46:]
-            print(file_name)
             new_path = MEDIA_ROOT + str(file_name)
             shutil.move(old_path, new_path)
+            request.session[audio_url] = file_name
+    return request.session[audio_url]
+
+#tacatron
+def get_data_from_old_tts(request, speaker_id, text, audio_url, strip_name):
+    
+    api_url2 = 'http://80.72.180.130:6060/generate_audio'
+    data_to_send = {"speaker_id": speaker_id, "text": text}
+    response = requests.post(api_url2, json=data_to_send)
+    if response.status_code == 200:
+        received_data = response.json()
+        old_path = str(received_data['audio_url'])
+        #strip_name for take only audio's name
+        file_name = str(received_data['audio_url'])[strip_name:]
+        new_path = MEDIA_ROOT + str(file_name)
+        shutil.move('/mnt/ks/Works/bot_text2speech/'+old_path+'.mp3', new_path)
+        request.session['audio_url'] = file_name
+    else:
+        print('error in old tts')
+        text = 'ката чыкты' # if smth error
+        data_to_send = {"speaker_id": speaker_id, "text": text}
+        response = requests.post(api_url, json=data_to_send)
+        if response.status_code == 200:
+            received_data = response.json()
+            old_path = str(received_data['audio_url'])
+            file_name = str(received_data['audio_url'])[strip_name:]
+            new_path = MEDIA_ROOT + str(file_name)
+            shutil.move('/mnt/ks/Works/bot_text2speech/'+old_path+'.mp3', new_path)
             request.session[audio_url] = file_name
     return request.session[audio_url]
 
@@ -101,50 +126,52 @@ def text_to_speech(request):
         form = TextForm(request.POST)
         if form.is_valid():
             request.session['text'] = text
-            api_url = 'http://0.0.0.0:8089/api/tts'  # Replace with your Flask API's URL
+            #Audios.objects.create(text=request.session['text'], audio_file=request.session['audio_url'])
             if choose == 'man':
-                data_to_send = {"speaker_id": "1", "text": text}  # Replace with your data
-
-                response = requests.post(api_url, json=data_to_send)
-                if response.status_code == 200:
-                    received_data = response.json()
-                    print(received_data['result'])
-                    old_path = str(received_data['result'])
-                    file_name = str(received_data['result'])[46:]
-                    new_path = MEDIA_ROOT + str(file_name)
-                    shutil.move(old_path, new_path)
-                    request.session['audio_url'] = file_name
-                    #Audios.objects.create(text=request.session['text'], audio_file=request.session['audio_url'])
-                    request.session['audio_url'] = MEDIA_URL + request.session['audio_url']
-                    response_data = {'audio_url': request.session['audio_url'], 'audio_text': request.session['text'],
+                #Нурбек(V2)
+                request.session['audio_url'] = get_data_from_tts(request, '1', request.session['text'], 'audio_url')          
+                request.session['audio_url'] = MEDIA_URL + request.session['audio_url']
+                response_data = {'audio_url': request.session['audio_url'], 'audio_text': request.session['text'],
                                      'is_not_valid':
                                          False, 'captcha_error': False, 'other_error': False, 'man': True}
-                    return JsonResponse(response_data)
-                else:
-                    # Handle API error gracefully
-                    return JsonResponse({"error": "Failed to send/receive data"}, status=500)
+                return JsonResponse(response_data)
 
-            else:
-
-                data_to_send = {"speaker_id": "2", "text": text}
-
-                response = requests.post(api_url, json=data_to_send)
-                if response.status_code == 200:
-                    received_data = response.json()
-                    old_path = str(received_data['result'])
-                    file_name = str(received_data['result'])[46:]
-                    new_path = MEDIA_ROOT + str(file_name)
-                    shutil.move(old_path, new_path)
-                    request.session['audio_url'] = file_name
-                    #Audios.objects.create(text=request.session['text'], audio_file=request.session['audio_url'])
-                    request.session['audio_url'] = MEDIA_URL + request.session['audio_url']
-                    response_data = {'audio_url': request.session['audio_url'], 'audio_text': request.session['text'],
+            elif choose=='woman':
+                #Нурай(V2)
+                request.session['audio_url'] = get_data_from_tts(request, '2', request.session['text'], 'audio_url')          
+                request.session['audio_url'] = MEDIA_URL + request.session['audio_url']
+                response_data = {'audio_url': request.session['audio_url'], 'audio_text': request.session['text'],
                                      'is_not_valid':
                                          False, 'captcha_error': False, 'other_error': False, 'man': False}
-                    return JsonResponse(response_data)
-                else:
-                    # Handle API error gracefully
-                    return JsonResponse({"error": "Failed to send/receive data"}, status=500)
+                return JsonResponse(response_data)
+            elif choose=='man2':
+                #Нурбек(V1)
+                request.session['audio_url'] = get_data_from_old_tts(request, '5', request.session['text'], 'audio_url', 7)
+                #Audios.objects.create(text=request.session['text'], audio_file=request.session['audio_url'])
+                request.session['audio_url'] = MEDIA_URL + request.session['audio_url']
+                response_data = {'audio_url': request.session['audio_url'], 'audio_text': request.session['text'],
+                                    'is_not_valid':
+                                        False, 'captcha_error': False, 'other_error': False, 'man': False}
+                return JsonResponse(response_data)
+            elif choose=='woman2':
+                #Нурай(V1)
+                request.session['audio_url'] = get_data_from_old_tts(request, '6', request.session['text'], 'audio_url', 6)
+                request.session['audio_url'] = MEDIA_URL + request.session['audio_url']
+                response_data = {'audio_url': request.session['audio_url'], 'audio_text': request.session['text'],
+                                    'is_not_valid':
+                                        False, 'captcha_error': False, 'other_error': False, 'man': False}
+                return JsonResponse(response_data)
+
+            elif choose=='joldosh':
+                #Жолдошбек
+                request.session['audio_url'] = get_data_from_old_tts(request, '7', request.session['text'], 'audio_url', 9)
+                request.session['audio_url'] = MEDIA_URL + request.session['audio_url']
+                response_data = {'audio_url': request.session['audio_url'], 'audio_text': request.session['text'],
+                                    'is_not_valid':
+
+                                        False, 'captcha_error': False, 'other_error': False, 'man': False}
+                return JsonResponse(response_data)
+         
         else:
             # print(form.errors)
             if str(form.errors) in captcha_error:

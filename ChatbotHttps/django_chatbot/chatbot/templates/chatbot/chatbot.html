@@ -315,7 +315,7 @@
                 `;
         messagesList.appendChild(messageItem);
         let k = 0;
-        fetch(`https://80.72.180.130:8000/process_text/${message}`)
+        fetch(`https://80.72.180.130:8086/process_text/${message}`)
         .then(response => {
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
